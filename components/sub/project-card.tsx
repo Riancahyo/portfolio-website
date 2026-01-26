@@ -16,7 +16,7 @@ type ProjectCardProps = {
   description: string;
   demoLink: string;
   githubLink?: string;
-  techStack?: TechStack[];
+  techStack?: readonly TechStack[];
 };
 
 export const ProjectCard = ({
