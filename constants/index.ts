@@ -165,8 +165,8 @@ export const PROJECTS = [
     description:
       "Website portfolio personal yang dibangun dengan Next.js untuk performa optimal dan SEO-friendly. Menampilkan project showcase, skills, pengalaman kerja, dan informasi kontak dengan desain modern dan responsive. Menggunakan Next.js App Router, TypeScript untuk type safety, dan Tailwind CSS untuk styling yang efisien dan konsisten.",
     image: "/projects/project-5.png",
-    link: "https://link-project-kamu.com",
-    github: "https://github.com",
+    link: "https://portfolio-riancahyo.vercel.app/",
+    github: "https://github.com/Riancahyo/portfolio-website.git",
     techStack: [
       { name: "Next.js", icon: "/skills/next.png" },
       { name: "React", icon: "/skills/react.png" },
