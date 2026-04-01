@@ -42,7 +42,7 @@ export const HeroContent = () => {
           className="text-base md:text-lg text-gray-400 my-3 max-w-[600px]"
         >
           Hi! I&apos;m a Full Stack Developer who loves creating scalable, high-performance web applications.  
-          I work with modern technologies like React, Next.js, Laravel, Nodejs, TypeScript, MySQL and PostgreSQL.
+          I work with modern technologies like React, Next.js, TypeScript, Laravel, Node.js, Express.js, MySQL and PostgreSQL.
         </motion.p>
 
         <motion.div

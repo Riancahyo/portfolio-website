@@ -69,9 +69,11 @@ const About = () => {
           <p className="text-base md:text-lg text-gray-300 leading-relaxed">
             My tech stack includes 
             <span className="text-cyan-500 font-semibold"> React</span>, 
-            <span className="text-cyan-500 font-semibold"> Next.js</span>, 
+            <span className="text-cyan-500 font-semibold"> Next.js</span>,
+            <span className="text-cyan-500 font-semibold"> TypeScript</span>,  
             <span className="text-cyan-500 font-semibold"> Laravel</span>, 
-            <span className="text-cyan-500 font-semibold"> Node.js</span>, 
+            <span className="text-cyan-500 font-semibold"> Node.js</span>,
+            <span className="text-cyan-500 font-semibold"> Express.js</span>, 
             and databases like 
             <span className="text-cyan-500 font-semibold"> MySQL</span> & 
             <span className="text-cyan-500 font-semibold"> PostgreSQL</span>.  

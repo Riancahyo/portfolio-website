@@ -133,15 +133,43 @@ export const OTHER_SKILL = [
 
 export const PROJECTS = [
   {
+    title: "NGOPAI",
+    description:
+      "A digital education platform built with Next.js for the Ministry of Religious Affairs, East Java (Kemenag Jatim). Key features include activity management, learning materials, participant attendance tracking, and automated certificate generation.",
+    image: "/projects/ngopai.png",
+    link: "",
+    github: "",
+    techStack: [
+      { name: "Next.js", icon: "/skills/next.png" },
+      { name: "TypeScript", icon: "/skills/ts.png" },
+      { name: "Tailwind CSS", icon: "/skills/tailwind.png" },
+      { name: "PostgreSQL", icon: "/skills/postgresql.png" },
+    ]
+  },
+  {
+    title: "Paratamu Coffee",
+    description:
+      "A website for a local café built with React and Express.js. Key features include an interactive menu display, facility information, and an online reservation system with room selection.",
+    image: "/projects/paratamu-coffee.png",
+    link: "https://paratamu-coffee.vercel.app/",
+    github: "https://github.com/Riancahyo/paratamu-coffee.git",
+    techStack: [
+      { name: "React", icon: "/skills/react.png" },
+      { name: "TypeScript", icon: "/skills/ts.png" },
+      { name: "Tailwind CSS", icon: "/skills/tailwind.png" },
+      { name: "Express.js", icon: "/skills/express.png" },
+      { name: "PostgreSQL", icon: "/skills/postgresql.png" },
+    ]
+  },
+  {
     title: "AI Career Roadmap",
     description:
-      "Platform jalur karir berbasis AI yang dibangun dengan React Next.js. Fitur utamanya mencakup rekomendasi roadmap personal, saran skill relevan, dan pelacakan progres belajar melalui visualisasi dinamis.",
+      "An AI-powered career path platform built with Next.js. Key features include personalized roadmap recommendations, relevant skill suggestions, and learning progress tracking through dynamic visualizations.",
     image: "/projects/project-1.png",
     link: "https://career-roadmap-dev.vercel.app/",
     github: "https://github.com/Riancahyo/career-roadmap.git",
     techStack: [
       { name: "Next.js", icon: "/skills/next.png" },
-      { name: "React", icon: "/skills/react.png" },
       { name: "TypeScript", icon: "/skills/ts.png" },
       { name: "Tailwind CSS", icon: "/skills/tailwind.png" },
     ]
@@ -149,27 +177,25 @@ export const PROJECTS = [
   {
     title: "E-Book Library",
     description:
-      "Sistem peminjaman e-book digital yang dibangun dengan Laravel dan Livewire untuk interaksi real-time. Platform ini menyediakan fitur katalog buku digital, sistem peminjaman dengan batas waktu, perpanjangan otomatis, notifikasi reminder, dan dashboard admin untuk monitoring aktivitas peminjaman. Livewire memberikan pengalaman user yang dinamis tanpa reload halaman.",
+      "A digital e-book borrowing system built with Laravel and Livewire for real-time interaction. Features include a digital book catalog, time-limited borrowing system, auto-renewal, reminder notifications, and an admin dashboard for monitoring borrowing activity.",
     image: "/projects/project-3.png",
-    link: "#",
+    link: "http://ebook-library.great-site.net/",
     github: "https://github.com/Riancahyo/Books.git",
     techStack: [
       { name: "Laravel", icon: "/skills/laravel.png" },
       { name: "Livewire", icon: "/skills/livewire.png" },
       { name: "MySQL", icon: "/skills/mysql.png" },
-      { name: "React", icon: "/skills/react.png" },
     ]
   },
   {
     title: "Portfolio Website",
     description:
-      "Website portfolio personal yang dibangun dengan Next.js untuk performa optimal dan SEO-friendly. Menampilkan project showcase, skills, pengalaman kerja, dan informasi kontak dengan desain modern dan responsive. Menggunakan Next.js App Router, TypeScript untuk type safety, dan Tailwind CSS untuk styling yang efisien dan konsisten.",
+      "A personal portfolio website built with Next.js for optimal performance and SEO. Features a project showcase, skills, work experience, and contact information with a modern responsive design using Next.js App Router, TypeScript, and Tailwind CSS.",
     image: "/projects/project-5.png",
     link: "https://portfolio-riancahyo.vercel.app/",
     github: "https://github.com/Riancahyo/portfolio-website.git",
     techStack: [
       { name: "Next.js", icon: "/skills/next.png" },
-      { name: "React", icon: "/skills/react.png" },
       { name: "TypeScript", icon: "/skills/ts.png" },
       { name: "Tailwind CSS", icon: "/skills/tailwind.png" },
     ]
@@ -177,7 +203,7 @@ export const PROJECTS = [
   {
     title: "AI Financial Assistant",
     description:
-      "Aplikasi keuangan berbasis AI yang dibangun dengan React. Membantu pengguna mengelola keuangan pribadi dengan smart menggunakan artificial intelligence untuk menganalisis pola pengeluaran, memberikan insight keuangan, dan rekomendasi budget otomatis. Dilengkapi fitur expense tracking, financial planning, dan visualisasi data keuangan yang komprehensif dengan chart interaktif.",
+      "An AI-powered personal finance application built with React. Helps users manage their finances smartly by analyzing spending patterns, providing financial insights, and generating automatic budget recommendations. Includes expense tracking, financial planning, and interactive chart visualizations.",
     image: "/projects/project-2.png",
     link: "https://keuangan-balqis.vercel.app/",
     github: "https://github.com/Riancahyo/web_finance.git",
@@ -190,7 +216,7 @@ export const PROJECTS = [
   {
     title: "Bimbel Management System",
     description:
-      "Sistem manajemen bimbingan belajar full stack yang dibangun dengan Node.js. Fitur mencakup manajemen siswa dan pengajar, penjadwalan kelas otomatis, tracking pembayaran, laporan progress siswa, dan sistem absensi real-time. Menggunakan Node.js untuk backend API yang cepat dan scalable dengan arsitektur modern untuk performa optimal.",
+      "A full-stack tutoring center management system built with Node.js. Features include student and teacher management, automated class scheduling, payment tracking, student progress reports, and a real-time attendance system.",
     image: "/projects/project-4.png",
     link: "#",
     github: "https://github.com/Riancahyo/scheduling.git",
