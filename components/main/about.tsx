@@ -30,7 +30,7 @@ const About = () => {
           viewport={{ once: true }}
           className="relative w-full lg:w-1/2 flex justify-center"
         >
-          <div className="relative w-[300px] h-[300px] md:w-[400px] md:h-[400px] -mt-8 md:-mt-12">
+          <div className="relative w-[220px] h-[220px] sm:w-[280px] sm:h-[280px] md:w-[400px] md:h-[400px] md:-mt-12">
             <div className="absolute inset-0 bg-white/10 rounded-full blur-3xl opacity-20 animate-pulse" />
             <div className="relative w-full h-full rounded-full overflow-hidden">
               <Image

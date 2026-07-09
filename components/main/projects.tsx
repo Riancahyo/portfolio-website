@@ -1,21 +1,36 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { ProjectCard } from "@/components/sub/project-card";
-import { PROJECTS } from "@/constants";
 import { slideInFromLeft, slideInFromTop } from "@/lib/motion";
+import Image from "next/image";
+import Link from "next/link";
+import { HiExternalLink } from "react-icons/hi";
+import { RxGithubLogo } from "react-icons/rx";
+import { PROJECTS } from "@/constants";
 
 export const Projects = () => {
   const [showAll, setShowAll] = useState(false);
-  const displayedProjects = showAll ? PROJECTS : PROJECTS.slice(0, 3);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  const displayLimit = isMobile ? 4 : 4;
+  const displayedProjects = showAll ? PROJECTS : PROJECTS.slice(0, displayLimit);
 
   return (
     <section
       id="projects"
       className="flex flex-col items-center justify-center py-16 md:py-20 pb-24 relative overflow-hidden"
     >
-      <motion.h1 
+      <motion.h1
         variants={slideInFromTop}
         initial="hidden"
         whileInView="visible"
@@ -24,7 +39,7 @@ export const Projects = () => {
       >
         My Projects
       </motion.h1>
-      
+
       <motion.p
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -35,41 +50,131 @@ export const Projects = () => {
         Here are some of my recent projects showcasing my fullstack development skills.
       </motion.p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-6 md:px-10 max-w-7xl w-full">
+      <div className="
+        grid
+        grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4
+        gap-3 sm:gap-6
+        px-3 sm:px-6 md:px-10
+        max-w-[1400px] w-full
+      ">
         {displayedProjects.map((project, index) => (
           <motion.div
             key={project.title}
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: index * 0.2 }}
+            transition={{ delay: index * 0.1 }}
+            className="
+              group relative overflow-hidden rounded-lg
+              border border-zinc-700/60 bg-white/3
+              hover:border-zinc-500
+              transition-all duration-300
+              flex flex-col
+              h-[290px] sm:h-[340px] md:h-[400px]
+            "
           >
-            <ProjectCard
-              src={project.image}
-              title={project.title}
-              description={project.description}
-              demoLink={project.link}
-              githubLink={project.github}
-              techStack={project.techStack}
-            />
+            {/* Image */}
+            <div className="relative w-full h-[120px] sm:h-[160px] md:h-[180px] overflow-hidden flex-shrink-0">
+              <Image
+                src={project.image}
+                alt={project.title}
+                fill
+                className="object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#030014]/80 via-transparent to-transparent" />
+
+              {/* Tech stack icons on image */}
+              <div className="absolute bottom-2 left-2 flex gap-1 flex-wrap">
+                {project.techStack?.slice(0, 4).map((tech, i) => (
+                  <div
+                    key={i}
+                    className="w-4 h-4 sm:w-5 sm:h-5 relative"
+                    title={tech.name}
+                  >
+                    <Image
+                      src={tech.icon}
+                      alt={tech.name}
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                ))}
+                {project.techStack && project.techStack.length > 4 && (
+                  <span className="text-[9px] sm:text-[10px] text-zinc-400 self-center">
+                    +{project.techStack.length - 4}
+                  </span>
+                )}
+              </div>
+            </div>
+
+            {/* Content */}
+            <div className="flex flex-col flex-grow p-3 sm:p-4">
+              <h3 className="text-sm sm:text-base font-bold text-white mb-1 line-clamp-1">
+                {project.title}
+              </h3>
+
+              <p className="text-[10px] sm:text-xs text-gray-400 flex-grow line-clamp-2 leading-relaxed">
+                {project.description}
+              </p>
+
+              {/* Buttons */}
+              <div className="mt-3 flex gap-2">
+                {project.link ? (
+                  <Link
+                    href={project.link}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    className="
+                      flex items-center justify-center gap-1 flex-1 px-2 py-1.5
+                      bg-white hover:bg-zinc-100 text-black rounded-md
+                      text-[10px] sm:text-xs transition-all duration-200 font-semibold
+                    "
+                  >
+                    <HiExternalLink className="w-3 h-3 flex-shrink-0" />
+                    <span>Demo</span>
+                  </Link>
+                ) : (
+                  <div className="flex-1" />
+                )}
+                {project.github ? (
+                  <Link
+                    href={project.github}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    className="
+                      flex items-center justify-center gap-1 flex-1 px-2 py-1.5
+                      border border-zinc-600 hover:border-zinc-400 hover:bg-white/5 text-zinc-300 rounded-md
+                      text-[10px] sm:text-xs transition-all duration-200 font-semibold
+                    "
+                  >
+                    <RxGithubLogo className="w-3 h-3 flex-shrink-0" />
+                    <span>Code</span>
+                  </Link>
+                ) : (
+                  <div className="flex-1" />
+                )}
+              </div>
+            </div>
           </motion.div>
         ))}
       </div>
 
-      <motion.div
-        variants={slideInFromLeft(1)}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        className="mt-10"
-      >
-        <button
-          onClick={() => setShowAll(!showAll)}
-          className="px-8 py-3 button-primary text-center text-white cursor-pointer rounded-lg hover:scale-105 transition-transform"
+      {PROJECTS.length > displayLimit && (
+        <motion.div
+          variants={slideInFromLeft(1)}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="mt-10"
         >
-          {showAll ? "Show Less" : `View All (${PROJECTS.length})`}
-        </button>
-      </motion.div>
+          <button
+            onClick={() => setShowAll(!showAll)}
+            className="px-8 py-3 bg-white hover:bg-zinc-100 text-black text-center cursor-pointer rounded-lg transition-all duration-200 font-semibold text-sm"
+          >
+            {showAll ? "Show Less" : `View All (${PROJECTS.length})`}
+          </button>
+        </motion.div>
+      )}
     </section>
   );
 };

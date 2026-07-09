@@ -138,7 +138,7 @@ export const PROJECTS = [
       "A real-time financial information and point of sale system for managing internet voucher, mobile credit, PPOB product sales, and cash/transfer transactions. Features include shift management, live transaction monitoring via Server-Sent Events (SSE), and financial report export to Excel and PDF.",
     image: "/projects/hawreload.png",
     link: "https://hawreload.online",
-    github: "",
+    github: "#",
     techStack: [
       { name: "Next.js", icon: "/skills/next.png" },
       { name: "Express.js", icon: "/skills/express.png" },
@@ -152,7 +152,7 @@ export const PROJECTS = [
       "A digital education platform built with Next.js for the Ministry of Religious Affairs, East Java (Kemenag Jatim). Key features include activity management, learning materials, participant attendance tracking, and automated certificate generation.",
     image: "/projects/ngopai.png",
     link: "https://ngopai-paislove.vercel.app/",
-    github: "",
+    github: "#",
     techStack: [
       { name: "Next.js", icon: "/skills/next.png" },
       { name: "TypeScript", icon: "/skills/ts.png" },
