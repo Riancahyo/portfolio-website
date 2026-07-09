@@ -133,11 +133,25 @@ export const OTHER_SKILL = [
 
 export const PROJECTS = [
   {
+    title: "HAW RELOAD",
+    description:
+      "A real-time financial information and point of sale system for managing internet voucher, mobile credit, PPOB product sales, and cash/transfer transactions. Features include shift management, live transaction monitoring via Server-Sent Events (SSE), and financial report export to Excel and PDF.",
+    image: "/projects/hawreload.png",
+    link: "https://hawreload.online",
+    github: "",
+    techStack: [
+      { name: "Next.js", icon: "/skills/next.png" },
+      { name: "Express.js", icon: "/skills/express.png" },
+      { name: "TypeScript", icon: "/skills/ts.png" },
+      { name: "MySQL", icon: "/skills/mysql.png" },
+    ]
+  },
+  {
     title: "NGOPAI",
     description:
       "A digital education platform built with Next.js for the Ministry of Religious Affairs, East Java (Kemenag Jatim). Key features include activity management, learning materials, participant attendance tracking, and automated certificate generation.",
     image: "/projects/ngopai.png",
-    link: "",
+    link: "https://ngopai-paislove.vercel.app/",
     github: "",
     techStack: [
       { name: "Next.js", icon: "/skills/next.png" },
@@ -170,6 +184,19 @@ export const PROJECTS = [
     github: "https://github.com/Riancahyo/career-roadmap.git",
     techStack: [
       { name: "Next.js", icon: "/skills/next.png" },
+      { name: "TypeScript", icon: "/skills/ts.png" },
+      { name: "Tailwind CSS", icon: "/skills/tailwind.png" },
+    ]
+  },
+  {
+    title: "GulaGuard",
+    description:
+      "An AI-powered nutrition assistant PWA that helps users track daily sugar intake to reduce diabetes risk. Integrates Google Gemini API for AI-driven food analysis with image-based input for a fast, installable mobile experience.",
+    image: "/projects/gula.png",
+    link: "https://gulaguard.vercel.app",
+    github: "https://github.com/Riancahyo/gulaguard",
+    techStack: [
+      { name: "React", icon: "/skills/react.png" },
       { name: "TypeScript", icon: "/skills/ts.png" },
       { name: "Tailwind CSS", icon: "/skills/tailwind.png" },
     ]
@@ -263,7 +290,6 @@ export const ACHIEVEMENTS_DATA = [
     title: "BNSP Certified Junior Web Developer",
     description: "Official National Competency Certification in Web Development from BNSP Indonesia",
     year: "2024",
-    color: "from-purple-500 to-cyan-500",
     image: "/achievements/achievement-1.jpg",
     link: "https://drive.google.com/file/d/1zB9oXv7asvf4O0aFG18gq7V7e38MvK2O/view?usp=sharing",
   },
@@ -271,7 +297,6 @@ export const ACHIEVEMENTS_DATA = [
     title: "Fullstack Programming",
     description: "Completed comprehensive Fullstack Programming course via Udemy & BISA AI Academy",
     year: "2025",
-    color: "from-purple-500 to-cyan-500",
     image: "/achievements/achievement-2.jpg",
     link: "https://drive.google.com/file/d/1Z_7aigEGuekZ27pTOws_V2nEQp7G6Hhn/view?usp=sharing",
   },
@@ -279,7 +304,6 @@ export const ACHIEVEMENTS_DATA = [
     title: "Junior Web Developer - VSGA",
     description: "Vocational School Graduate Academy participant by Kominfo (Digital Talent Scholarship)",
     year: "2024",
-    color: "from-purple-500 to-cyan-500",
     image: "/achievements/achievement-3.png",
     link: "https://drive.google.com/file/d/1ilo_QbfZndSLuI9Z-nfUmSN_YGYRkIR8/view?usp=sharing",
   },
@@ -287,7 +311,6 @@ export const ACHIEVEMENTS_DATA = [
     title: "Database Foundations Specialist",
     description: "Completed intensive training in Database Foundations through Oracle Academy and TSA Kominfo",
     year: "2024",
-    color: "from-purple-500 to-cyan-500",
     image: "/achievements/achievement-4.png",
     link: "https://drive.google.com/file/d/1k1Yjw8HK1hWMqisQ3WCf36neLookNRMv/view?usp=sharing",
   },
@@ -295,7 +318,6 @@ export const ACHIEVEMENTS_DATA = [
     title: "AI Productivity & API Integration",
     description: "Learned to build AI-powered chatbots and integrate AI APIs at Hacktiv8 Indonesia",
     year: "2025",
-    color: "from-purple-500 to-cyan-500",
     image: "/achievements/achievement-5.png",
     link: "https://drive.google.com/file/d/1JSrQu43a9HIg5TC55ESe-PV8EDw2U2US/view?usp=drive_link",
   },
@@ -303,7 +325,6 @@ export const ACHIEVEMENTS_DATA = [
     title: "UI/UX Design",
     description: "Actively participated in UI/UX Design training program with dibimbing.id",
     year: "2023",
-    color: "from-purple-500 to-cyan-500",
     image: "/achievements/achievement-6.png",
     link: "https://drive.google.com/file/d/1pLRxvsoygC8oDMkWiDoqOm2bq2__XoBk/view?usp=drive_link",
   },
@@ -311,7 +332,6 @@ export const ACHIEVEMENTS_DATA = [
     title: "AI Fundamentals Certified",
     description: "Earned 'Belajar Dasar AI' certification from Dicoding Academy",
     year: "2025",
-    color: "from-purple-500 to-cyan-500",
     image: "/achievements/achievement-7.png",
     link: "https://drive.google.com/file/d/1RmFjG4565mi-LGUjz9lt4Z-QbRk3fYCd/view?usp=sharing",
   },
@@ -319,7 +339,6 @@ export const ACHIEVEMENTS_DATA = [
     title: "Cloud & Gen AI on AWS",
     description: "Certified in Cloud Fundamentals and Generative AI on AWS through Dicoding",
     year: "2025",
-    color: "from-purple-500 to-cyan-500",
     image: "/achievements/achievement-8.png",
     link: "https://drive.google.com/file/d/15fMJU25tdxXJKD_HvV8G3ft4zHnO3gIT/view?usp=sharing",
   },
@@ -327,7 +346,6 @@ export const ACHIEVEMENTS_DATA = [
     title: "Alibaba Cloud Certified Associate",
     description: "Professional international certification for Cloud Computing from Alibaba Cloud",
     year: "2024",
-    color: "from-purple-500 to-cyan-500",
     image: "/achievements/achievement-9.png",
     link: "https://drive.google.com/file/d/1K7r2f4M2YVrUtcJyunhGFmPP_yGsmB8T/view?usp=drive_link",
   },
@@ -335,7 +353,6 @@ export const ACHIEVEMENTS_DATA = [
     title: "Cloud & Networking Administration",
     description: "Completed Fundamentals of Cloud and Networking for Digital Entrepreneurs at DEA Kominfo",
     year: "2024",
-    color: "from-purple-500 to-cyan-500",
     image: "/achievements/achievement-10.png",
     link: "https://drive.google.com/file/d/17EjL3v4lj-U3MGp7SgbAOcqVbwJPIBY0/view?usp=drive_link",
   },
@@ -343,7 +360,6 @@ export const ACHIEVEMENTS_DATA = [
     title: "ASEAN Data Science Explorer",
     description: "Participated in the ADSE 2024 Enablement Session covering SAP Analytics Cloud and SAP Build Apps",
     year: "2024",
-    color: "from-purple-500 to-cyan-500",
     image: "/achievements/achievement-11.png",
     link: "https://drive.google.com/file/d/1LJ9E6XpLF9bMrhO2WxVJ9X5_7DYKtTaW/view?usp=drive_link",
   },
@@ -351,7 +367,6 @@ export const ACHIEVEMENTS_DATA = [
     title: "Database Foundations Course",
     description: "Awarded for satisfactory completion of all coursework in Database Foundations by Oracle Academy",
     year: "2024",
-    color: "from-purple-500 to-cyan-500",
     image: "/achievements/achievement-12.png",
     link: "https://drive.google.com/file/d/1H-TzmfS2PV58zksy67nK738TWW0zinA9/view?usp=drive_link",
   },
@@ -359,7 +374,6 @@ export const ACHIEVEMENTS_DATA = [
     title: "Oracle Database Final Exam",
     description: "Successfully completed the Database Foundations course final exam from Oracle Academy",
     year: "2024",
-    color: "from-purple-500 to-cyan-500",
     image: "/achievements/achievement-13.png",
     link: "https://drive.google.com/file/d/1DunPuW29y6NvYj0pLE_Wt3Lq9-3ODcVg/view?usp=drive_link",
   },

@@ -77,14 +77,14 @@ export const Navbar = () => {
         transition={{ duration: 0.5 }}
         className={`w-full h-[75px] fixed top-0 z-50 px-4 md:px-10 transition-all duration-300 ${
           scrolled 
-            ? "bg-[#03001490] backdrop-blur-xl shadow-2xl shadow-purple-500/20" 
-            : "bg-[#03001427] backdrop-blur-md shadow-lg shadow-[#2A0E61]/50"
+            ? "bg-[#03001490] backdrop-blur-xl shadow-2xl shadow-black/20" 
+            : "bg-[#03001427] backdrop-blur-md shadow-lg shadow-black/30"
         }`}
       >
         <div className="w-full h-full flex items-center justify-between max-w-[1800px] mx-auto">
           <Link href="#home" className="flex items-center gap-3 group">
             <div className="relative">
-              <div className="absolute inset-0 bg-purple-500/30 rounded-full blur-xl group-hover:bg-purple-500/50 transition-all" />
+              <div className="absolute inset-0 bg-white/0 rounded-full blur-xl group-hover:bg-white/10 transition-all" />
               <Image
                 src="/logo.png"
                 alt="Logo"
@@ -99,7 +99,7 @@ export const Navbar = () => {
             </span>
           </Link>
 
-          <nav className="hidden lg:flex items-center gap-1 bg-[#0F0728]/60 backdrop-blur-md px-6 py-3 rounded-full border border-purple-500/20">
+          <nav className="hidden lg:flex items-center gap-1 bg-white/5 backdrop-blur-md px-6 py-3 rounded-full border border-white/10">
             {NAV_LINKS.map((link) => {
               const isActive = activeSection === link.link.replace('#', '');
               return (
@@ -115,7 +115,7 @@ export const Navbar = () => {
                     {isActive && (
                       <motion.div
                         layoutId="navbar-indicator"
-                        className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-cyan-500/20 rounded-full -z-10"
+                        className="absolute inset-0 bg-white/10 rounded-full -z-10"
                         transition={{ type: "spring", duration: 0.6 }}
                       />
                     )}
@@ -134,9 +134,8 @@ export const Navbar = () => {
                 key={name}
                 className="group relative"
               >
-                <div className="absolute inset-0 bg-purple-500/0 group-hover:bg-purple-500/20 rounded-full blur-xl transition-all" />
-                <div className="relative p-2 bg-[#0F0728]/60 backdrop-blur-md rounded-full border border-purple-500/20 hover:border-purple-500/50 transition-all">
-                  <Icon className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors" />
+                <div className="relative p-2 bg-white/5 backdrop-blur-md rounded-full border border-white/10 hover:border-white/30 transition-all">
+                  <Icon className="w-5 h-5 text-zinc-400 group-hover:text-white transition-colors" />
                 </div>
               </Link>
             ))}
@@ -170,11 +169,11 @@ export const Navbar = () => {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 h-full w-[280px] bg-gradient-to-br from-[#0F0728] to-[#1a0b3d] z-50 lg:hidden shadow-2xl shadow-purple-500/50"
+              className="fixed top-0 right-0 h-full w-[280px] bg-[#030014] z-50 lg:hidden border-l border-white/10"
             >
               <button
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="absolute top-6 right-6 w-10 h-10 flex items-center justify-center rounded-full bg-purple-500/20 hover:bg-purple-500/30 transition-colors"
+                className="absolute top-6 right-6 w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-colors"
               >
                 <span className="text-white text-2xl">&times;</span>
               </button>
@@ -195,8 +194,8 @@ export const Navbar = () => {
                           onClick={() => setIsMobileMenuOpen(false)}
                           className={`block px-4 py-3 rounded-lg font-medium transition-all ${
                             isActive
-                              ? "bg-gradient-to-r from-purple-500/20 to-cyan-500/20 text-white border border-purple-500/30"
-                              : "text-gray-400 hover:text-white hover:bg-purple-500/10"
+                              ? "bg-white/10 text-white border border-white/20"
+                              : "text-zinc-400 hover:text-white hover:bg-white/5"
                           }`}
                         >
                           {link.title}
@@ -206,7 +205,7 @@ export const Navbar = () => {
                   })}
                 </nav>
 
-                <div className="my-6 h-px bg-gradient-to-r from-transparent via-purple-500/50 to-transparent" />
+                <div className="my-6 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
@@ -224,8 +223,8 @@ export const Navbar = () => {
                         key={name}
                         className="group"
                       >
-                        <div className="p-3 bg-[#0F0728] rounded-lg border border-purple-500/20 hover:border-purple-500/50 transition-all">
-                          <Icon className="w-6 h-6 text-gray-400 group-hover:text-white transition-colors" />
+                        <div className="p-3 bg-white/5 rounded-lg border border-white/10 hover:border-white/30 transition-all">
+                          <Icon className="w-6 h-6 text-zinc-400 group-hover:text-white transition-colors" />
                         </div>
                       </Link>
                     ))}

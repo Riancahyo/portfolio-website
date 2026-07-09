@@ -20,7 +20,7 @@ export const HeroContent = () => {
       <div className="h-full w-full flex flex-col gap-4 justify-center text-start max-w-[650px]">
         <motion.div
           variants={slideInFromTop}
-          className="Welcome-box py-[10px] px-[15px] border border-[#7042f88b] opacity-[0.9] w-fit"
+          className="Welcome-box py-[10px] px-[15px] border border-zinc-600/50 opacity-[0.9] w-fit"
         >
           <h1 className="Welcome-text text-[13px]">
             Full Stack Developer Portfolio
@@ -51,13 +51,13 @@ export const HeroContent = () => {
         >
           <a
             href="#projects"
-            className="py-3 px-6 button-primary text-center text-white cursor-pointer rounded-lg min-w-[160px] hover:scale-105 transition-transform"
+            className="py-3 px-6 bg-white hover:bg-zinc-100 text-black text-center cursor-pointer rounded-lg min-w-[160px] transition-all duration-200 font-semibold text-sm"
           >
             View Projects
           </a>
           <a
             href="#contact"
-            className="py-3 px-6 text-center text-white cursor-pointer rounded-lg min-w-[160px] border border-purple-500 hover:bg-purple-500/20 transition-all"
+            className="py-3 px-6 text-center text-zinc-300 cursor-pointer rounded-lg min-w-[160px] border border-zinc-600 hover:border-zinc-400 hover:bg-white/5 transition-all duration-200 font-medium text-sm"
           >
             Contact Me
           </a>

@@ -28,7 +28,7 @@ export const ProjectCard = ({
   techStack,
 }: ProjectCardProps) => {
   return (
-    <div className="group relative overflow-hidden rounded-xl border border-[#2A0E61] bg-[#03001417] backdrop-blur-sm hover:border-purple-500/50 transition-all duration-300 flex flex-col h-full">
+    <div className="group relative overflow-hidden rounded-xl border border-zinc-700/60 bg-white/3 backdrop-blur-sm hover:border-zinc-500 transition-all duration-300 flex flex-col h-full">
       <div className="relative w-full h-[200px] overflow-hidden">
         <Image
           src={src}
@@ -38,12 +38,12 @@ export const ProjectCard = ({
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#030014] via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
         
-        <div className="absolute inset-0 flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-all duration-300">
+          <div className="absolute inset-0 flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-all duration-300">
           <Link
             href={demoLink}
             target="_blank"
             rel="noreferrer noopener"
-            className="flex items-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg text-sm font-semibold transition-all transform hover:scale-105"
+            className="flex items-center gap-2 px-4 py-2 bg-white hover:bg-zinc-100 text-black rounded-lg text-sm font-semibold transition-all duration-200"
             onClick={(e) => e.stopPropagation()}
           >
             <HiExternalLink className="w-4 h-4" />
@@ -55,7 +55,7 @@ export const ProjectCard = ({
               href={githubLink}
               target="_blank"
               rel="noreferrer noopener"
-              className="flex items-center gap-2 px-4 py-2 bg-[#0F0728] hover:bg-[#1a0b3d] border border-purple-500/50 text-white rounded-lg text-sm font-semibold transition-all transform hover:scale-105"
+              className="flex items-center gap-2 px-4 py-2 border border-zinc-500 hover:border-zinc-300 hover:bg-white/5 bg-black/40 text-white rounded-lg text-sm font-semibold transition-all duration-200"
               onClick={(e) => e.stopPropagation()}
             >
               <RxGithubLogo className="w-4 h-4" />
@@ -66,7 +66,7 @@ export const ProjectCard = ({
       </div>
 
       <div className="relative p-5 flex flex-col flex-grow">
-        <h2 className="text-xl font-bold text-white mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-500 group-hover:to-cyan-500 transition-all">
+        <h2 className="text-xl font-bold text-white mb-2 group-hover:text-zinc-300 transition-colors duration-200">
           {title}
         </h2>
         <p className="text-sm text-gray-400 leading-relaxed line-clamp-3 flex-grow">
@@ -74,7 +74,7 @@ export const ProjectCard = ({
         </p>
 
         {techStack && techStack.length > 0 && (
-          <div className="mt-4 pt-4 border-t border-[#2A0E61]">
+          <div className="mt-4 pt-4 border-t border-zinc-700/60">
             <div className="flex items-center gap-3 flex-wrap">
               {techStack.map((tech, index) => (
                 <div
@@ -98,7 +98,7 @@ export const ProjectCard = ({
       </div>
 
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-cyan-500/10 blur-xl" />
+        <div className="absolute inset-0 bg-white/3 blur-xl" />
       </div>
     </div>
   );

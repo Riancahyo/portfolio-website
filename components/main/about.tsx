@@ -31,7 +31,7 @@ const About = () => {
           className="relative w-full lg:w-1/2 flex justify-center"
         >
           <div className="relative w-[300px] h-[300px] md:w-[400px] md:h-[400px] -mt-8 md:-mt-12">
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full blur-3xl opacity-30 animate-pulse" />
+            <div className="absolute inset-0 bg-white/10 rounded-full blur-3xl opacity-20 animate-pulse" />
             <div className="relative w-full h-full rounded-full overflow-hidden">
               <Image
                 src="/logo.png" 
@@ -52,13 +52,13 @@ const About = () => {
         >
           <h2 className="text-2xl md:text-3xl font-bold text-white">
             Hi! Im{" "}
-            <span className="text-transparent bg-clip-text bg-white">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-zinc-100 to-zinc-400">
               Rian Cahyo
             </span>
           </h2>
 
           <p className="text-base md:text-lg text-gray-300 leading-relaxed">
-            A passionate <span className="text-purple-500 font-semibold">Full Stack Developer </span> 
+            A passionate <span className="text-zinc-200 font-semibold">Full Stack Developer </span> 
             and a 6th-semester student of Technology of Software Engineering
             at Politeknik Negeri Madiun  
             I love building complete web applications from crafting beautiful user interfaces 
@@ -68,27 +68,27 @@ const About = () => {
 
           <p className="text-base md:text-lg text-gray-300 leading-relaxed">
             My tech stack includes 
-            <span className="text-cyan-500 font-semibold"> React</span>, 
-            <span className="text-cyan-500 font-semibold"> Next.js</span>,
-            <span className="text-cyan-500 font-semibold"> TypeScript</span>,  
-            <span className="text-cyan-500 font-semibold"> Laravel</span>, 
-            <span className="text-cyan-500 font-semibold"> Node.js</span>,
-            <span className="text-cyan-500 font-semibold"> Express.js</span>, 
+            <span className="text-zinc-200 font-semibold"> React</span>, 
+            <span className="text-zinc-200 font-semibold"> Next.js</span>,
+            <span className="text-zinc-200 font-semibold"> TypeScript</span>,  
+            <span className="text-zinc-200 font-semibold"> Laravel</span>, 
+            <span className="text-zinc-200 font-semibold"> Node.js</span>,
+            <span className="text-zinc-200 font-semibold"> Express.js</span>, 
             and databases like 
-            <span className="text-cyan-500 font-semibold"> MySQL</span> & 
-            <span className="text-cyan-500 font-semibold"> PostgreSQL</span>.  
+            <span className="text-zinc-200 font-semibold"> MySQL</span> &amp; 
+            <span className="text-zinc-200 font-semibold"> PostgreSQL</span>.  
             Always learning, building, and continually improving my craft.
           </p>
 
           <div className="grid grid-cols-2 gap-3 mt-3">
-            <div className="border border-[#2A0E61] bg-[#03001417] backdrop-blur-md rounded-lg p-3 text-center">
-              <h3 className="text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-cyan-500">
+            <div className="border border-zinc-700/60 bg-white/5 backdrop-blur-md rounded-lg p-3 text-center">
+              <h3 className="text-2xl md:text-3xl font-bold text-white">
                 1+
               </h3>
               <p className="text-gray-400 text-xs md:text-sm mt-1">Years Exp</p>
             </div>
-            <div className="border border-[#2A0E61] bg-[#03001417] backdrop-blur-md rounded-lg p-3 text-center">
-              <h3 className="text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-cyan-500">
+            <div className="border border-zinc-700/60 bg-white/5 backdrop-blur-md rounded-lg p-3 text-center">
+              <h3 className="text-2xl md:text-3xl font-bold text-white">
                 10+
               </h3>
               <p className="text-gray-400 text-xs md:text-sm mt-1">Projects</p>
@@ -98,14 +98,14 @@ const About = () => {
           <div className="flex flex-wrap gap-3 mt-3">
             <a 
               href="#contact" 
-              className="px-5 py-2.5 button-primary text-center text-white cursor-pointer rounded-lg text-sm md:text-base hover:scale-105 transition-transform"
+              className="px-5 py-2.5 bg-white hover:bg-zinc-100 text-black text-center cursor-pointer rounded-lg text-sm font-semibold transition-all duration-200"
             >
               Contact Me
             </a>
             <a 
               href="/resume.pdf" 
               target="_blank" 
-              className="px-5 py-2.5 border border-purple-500 text-white cursor-pointer rounded-lg hover:bg-purple-500/20 transition-all text-sm md:text-base"
+              className="px-5 py-2.5 border border-zinc-600 hover:border-zinc-400 hover:bg-white/5 text-zinc-300 cursor-pointer rounded-lg text-sm transition-all duration-200 font-medium"
             >
               Download CV
             </a>

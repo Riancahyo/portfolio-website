@@ -124,7 +124,7 @@ const SmartTalk = () => {
         viewport={{ once: true }}
         className="w-full max-w-5xl px-6 md:px-10"
       >
-        <div className="border border-[#2A0E61] bg-[#03001417] backdrop-blur-md rounded-lg overflow-hidden">
+        <div className="border border-zinc-700/60 bg-white/3 backdrop-blur-md rounded-lg overflow-hidden">
           <div className="h-[450px] md:h-[380px] overflow-y-auto p-4 md:p-6 space-y-3">
             {messages.map((msg, index) => (
               <motion.div
@@ -144,7 +144,7 @@ const SmartTalk = () => {
               <motion.div
                 initial={{ scale: 0.95, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
-                className="bg-[#0F0728] border border-purple-500/30 p-3 rounded-lg w-fit text-gray-300"
+                className="bg-white/5 border border-zinc-700/60 p-3 rounded-lg w-fit text-zinc-300"
               >
                 {typingText}
               </motion.div>
@@ -163,7 +163,7 @@ const SmartTalk = () => {
                   <button
                     key={index}
                     onClick={() => handleSend(question)}
-                    className="text-left text-xs md:text-sm px-3 py-2 bg-[#0F0728] border border-purple-500/30 rounded-lg text-gray-300 hover:border-purple-500 transition-all"
+                    className="text-left text-xs md:text-sm px-3 py-2 bg-white/5 border border-zinc-700 rounded-lg text-zinc-300 hover:border-zinc-400 hover:bg-white/10 transition-all"
                   >
                     {question}
                   </button>
@@ -172,7 +172,7 @@ const SmartTalk = () => {
             </div>
           )}
 
-          <div className="border-t border-[#2A0E61] p-4">
+          <div className="border-t border-zinc-700/60 p-4">
             <div className="flex gap-2">
               <input
                 type="text"
@@ -181,12 +181,12 @@ const SmartTalk = () => {
                 onChange={(e) => setInput(e.target.value)}
                 onKeyPress={handleKeyPress}
                 disabled={isLoading}
-                className="flex-1 px-4 py-2.5 text-sm bg-[#0F0728] border border-purple-500/30 rounded-lg text-white focus:outline-none focus:border-purple-500 disabled:opacity-50 placeholder:text-gray-500"
+                className="flex-1 px-4 py-2.5 text-sm bg-white/5 border border-zinc-700 rounded-lg text-white focus:outline-none focus:border-zinc-400 disabled:opacity-50 placeholder:text-zinc-500"
               />
               <button
                 onClick={() => handleSend()}
                 disabled={isLoading || !input.trim()}
-                className="px-6 py-2.5 text-sm button-primary text-white rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:scale-105 transition-transform"
+                className="px-6 py-2.5 text-sm font-semibold bg-white hover:bg-zinc-100 text-black rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isLoading ? "..." : "Send"}
               </button>

@@ -66,8 +66,8 @@ const Achievements = () => {
             transition={{ delay: index * 0.1 }}
             className="
               group relative overflow-hidden rounded-lg 
-              border border-[#2A0E61] bg-[#03001417] 
-              hover:border-purple-500/50 
+              border border-zinc-700/60 bg-white/3
+              hover:border-zinc-500 
               transition-all duration-300
               flex flex-col justify-between
               h-[320px] sm:h-[350px] md:h-[380px] xl:h-[400px]
@@ -82,7 +82,7 @@ const Achievements = () => {
               />
 
               <span
-                className={`absolute top-2 right-2 text-[10px] sm:text-xs px-2 py-1 rounded-full bg-gradient-to-r ${achievement.color} text-white`}
+                className="absolute top-2 right-2 text-[10px] sm:text-xs px-2 py-0.5 rounded-full bg-black/60 border border-zinc-600 text-zinc-300 font-medium"
               >
                 {achievement.year}
               </span>
@@ -104,8 +104,8 @@ const Achievements = () => {
                   rel="noreferrer noopener"
                   className="
                     flex items-center justify-center gap-1 px-3 py-1.5 
-                    bg-purple-600 text-white rounded-md 
-                    text-[10px] sm:text-sm hover:bg-purple-700
+                    bg-white hover:bg-zinc-100 text-black rounded-md 
+                    text-[10px] sm:text-sm transition-all duration-200 font-semibold
                   "
                 >
                   <HiExternalLink className="w-3 h-3 sm:w-4 sm:h-4" />
@@ -127,7 +127,7 @@ const Achievements = () => {
         >
           <button
             onClick={() => setShowAll(!showAll)}
-            className="px-8 py-3 button-primary text-center text-white cursor-pointer rounded-lg hover:scale-105 transition-transform"
+            className="px-8 py-3 bg-white hover:bg-zinc-100 text-black text-center cursor-pointer rounded-lg transition-all duration-200 font-semibold text-sm"
           >
             {showAll ? "Show Less" : `View All (${ACHIEVEMENTS_DATA.length})`}
           </button>

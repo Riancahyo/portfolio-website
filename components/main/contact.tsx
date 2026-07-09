@@ -115,32 +115,32 @@ const Contact = () => {
           </h3>
 
           <div className="flex items-start gap-3">
-            <div className="p-2.5 bg-purple-500/20 rounded-lg">
-              <HiMail className="text-purple-500 text-xl" />
+            <div className="p-2.5 bg-white/10 rounded-lg">
+              <HiMail className="text-zinc-300 text-xl" />
             </div>
             <div>
               <h4 className="text-white font-semibold text-sm md:text-base">Email</h4>
-              <a href="mailto:riancahyo75@gmail.com" className="text-gray-400 text-sm hover:text-purple-400 transition-colors">
+              <a href="mailto:riancahyo75@gmail.com" className="text-zinc-400 text-sm hover:text-zinc-200 transition-colors">
                 riancahyo75@gmail.com
               </a>
             </div>
           </div>
 
           <div className="flex items-start gap-3">
-            <div className="p-2.5 bg-purple-500/20 rounded-lg">
-              <HiPhone className="text-purple-500 text-xl" />
+            <div className="p-2.5 bg-white/10 rounded-lg">
+              <HiPhone className="text-zinc-300 text-xl" />
             </div>
             <div>
               <h4 className="text-white font-semibold text-sm md:text-base">Phone</h4>
-              <a href="tel:+6281217251350" className="text-gray-400 text-sm hover:text-purple-400 transition-colors">
+              <a href="tel:+6281217251350" className="text-zinc-400 text-sm hover:text-zinc-200 transition-colors">
                 +62 812-1725-1350
               </a>
             </div>
           </div>
 
           <div className="flex items-start gap-3">
-            <div className="p-2.5 bg-purple-500/20 rounded-lg">
-              <HiLocationMarker className="text-purple-500 text-xl" />
+            <div className="p-2.5 bg-white/10 rounded-lg">
+              <HiLocationMarker className="text-zinc-300 text-xl" />
             </div>
             <div>
               <h4 className="text-white font-semibold text-sm md:text-base">Location</h4>
@@ -151,13 +151,13 @@ const Contact = () => {
           <div className="pt-4 md:pt-6">
             <h4 className="text-white font-semibold mb-3 text-sm md:text-base">Follow Me</h4>
             <div className="flex gap-3">
-              <a href="https://github.com/Riancahyo" target="_blank" rel="noopener noreferrer" className="p-2.5 bg-[#0F0728] border border-purple-500/30 rounded-lg hover:border-purple-500 transition-all hover:scale-110">
+              <a href="https://github.com/Riancahyo" target="_blank" rel="noopener noreferrer" className="p-2.5 bg-white/5 border border-zinc-600 rounded-lg hover:border-zinc-400 hover:bg-white/10 transition-all">
                 <RxGithubLogo className="text-white text-xl" />
               </a>
-              <a href="https://linkedin.com/in/riancahyoanggoro" target="_blank" rel="noopener noreferrer" className="p-2.5 bg-[#0F0728] border border-purple-500/30 rounded-lg hover:border-purple-500 transition-all hover:scale-110">
+              <a href="https://linkedin.com/in/riancahyoanggoro" target="_blank" rel="noopener noreferrer" className="p-2.5 bg-white/5 border border-zinc-600 rounded-lg hover:border-zinc-400 hover:bg-white/10 transition-all">
                 <RxLinkedinLogo className="text-white text-xl" />
               </a>
-              <a href="https://instagram.com/rianchyoa" target="_blank" rel="noopener noreferrer" className="p-2.5 bg-[#0F0728] border border-purple-500/30 rounded-lg hover:border-purple-500 transition-all hover:scale-110">
+              <a href="https://instagram.com/rianchyoa" target="_blank" rel="noopener noreferrer" className="p-2.5 bg-white/5 border border-zinc-600 rounded-lg hover:border-zinc-400 hover:bg-white/10 transition-all">
                 <RxInstagramLogo className="text-white text-xl" />
               </a>
             </div>
@@ -182,7 +182,7 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   disabled={isLoading}
-                  className="w-full px-3 md:px-4 py-2.5 md:py-3 text-sm md:text-base bg-[#0F0728] border border-purple-500/30 rounded-lg text-white focus:outline-none focus:border-purple-500 disabled:opacity-50"
+                  className="w-full px-3 md:px-4 py-2.5 md:py-3 text-sm md:text-base bg-white/5 border border-zinc-700 rounded-lg text-white focus:outline-none focus:border-zinc-400 disabled:opacity-50"
                 />
               </div>
               <div>
@@ -194,7 +194,7 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   disabled={isLoading}
-                  className="w-full px-3 md:px-4 py-2.5 md:py-3 text-sm md:text-base bg-[#0F0728] border border-purple-500/30 rounded-lg text-white focus:outline-none focus:border-purple-500 disabled:opacity-50"
+                  className="w-full px-3 md:px-4 py-2.5 md:py-3 text-sm md:text-base bg-white/5 border border-zinc-700 rounded-lg text-white focus:outline-none focus:border-zinc-400 disabled:opacity-50"
                 />
               </div>
             </div>
@@ -209,7 +209,7 @@ const Contact = () => {
                 required
                 disabled={isLoading}
                 placeholder="Project Inquiry"
-                className="w-full px-3 md:px-4 py-2.5 md:py-3 text-sm md:text-base bg-[#0F0728] border border-purple-500/30 rounded-lg text-white focus:outline-none focus:border-purple-500 disabled:opacity-50"
+                className="w-full px-3 md:px-4 py-2.5 md:py-3 text-sm md:text-base bg-white/5 border border-zinc-700 rounded-lg text-white focus:outline-none focus:border-zinc-400 disabled:opacity-50"
               />
             </div>
 
@@ -222,7 +222,7 @@ const Contact = () => {
                 required
                 disabled={isLoading}
                 rows={5}
-                className="w-full px-3 md:px-4 py-2.5 md:py-3 text-sm md:text-base bg-[#0F0728] border border-purple-500/30 rounded-lg text-white focus:outline-none focus:border-purple-500 resize-none disabled:opacity-50"
+                className="w-full px-3 md:px-4 py-2.5 md:py-3 text-sm md:text-base bg-white/5 border border-zinc-700 rounded-lg text-white focus:outline-none focus:border-zinc-400 resize-none disabled:opacity-50"
                 placeholder="Tell me about your project..."
               />
             </div>
@@ -230,7 +230,7 @@ const Contact = () => {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full md:w-auto px-6 md:px-8 py-2.5 md:py-3 text-sm md:text-base button-primary text-white rounded-lg hover:scale-105 transition-transform disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full md:w-auto px-6 md:px-8 py-2.5 md:py-3 text-sm font-semibold bg-white hover:bg-zinc-100 text-black rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isLoading ? "Sending..." : "Send Message"}
             </button>
