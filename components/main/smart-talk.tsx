@@ -1,18 +1,20 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { slideInFromLeft, slideInFromTop } from "@/lib/motion";
 import { ChatMessage, ChatLoading } from "@/components/main/ChatMessage";
 import { sendMessageToGemini, isGeminiConfigured } from "@/lib/gemini";
-import { ChatMessage as ChatMessageType, SUGGESTED_QUESTIONS } from "@/types/chat";
+import { ChatMessage as ChatMessageType } from "@/types/chat";
+import { useLanguage } from "@/context/LanguageContext";
 
 const SmartTalk = () => {
+  const { t } = useLanguage();
+
   const [messages, setMessages] = useState<ChatMessageType[]>([
     {
       role: "assistant",
-      content:
-        "Hi! I'm an AI assistant. Ask me anything about Rian Cahyo, his skills, projects, or certifications!",
+      content: t("smartTalk.greeting"),
     },
   ]);
 
@@ -22,6 +24,18 @@ const SmartTalk = () => {
   const [isTypingDone, setIsTypingDone] = useState(false);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  // Keep the initial greeting message in sync with the selected language,
+  // but don't override the conversation once the user has started chatting.
+  useEffect(() => {
+    setMessages((prev) => {
+      if (prev.length === 1 && prev[0].role === "assistant") {
+        return [{ role: "assistant", content: t("smartTalk.greeting") }];
+      }
+      return prev;
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [t]);
 
   const scrollToBottom = (behavior: ScrollBehavior = "smooth") => {
     messagesEndRef.current?.scrollIntoView({ behavior });
@@ -56,7 +70,7 @@ const SmartTalk = () => {
     if ((!input.trim() && !customMessage) || isLoading) return;
 
     if (!isGeminiConfigured()) {
-      alert("Please configure your Gemini API key in the .env.local file");
+      alert(t("smartTalk.apiKeyMissing"));
       return;
     }
 
@@ -75,7 +89,7 @@ const SmartTalk = () => {
       const assistantMessage = await sendMessageToGemini(newMessages);
       autoTypeResponse(assistantMessage, newMessages);
     } catch (error: any) {
-      const err = error?.message || "Unknown error";
+      const err = error?.message || t("smartTalk.unknownError");
       setMessages([
         ...newMessages,
         { role: "assistant", content: `Error: ${err}` },
@@ -92,6 +106,8 @@ const SmartTalk = () => {
     }
   };
 
+  const suggestedQuestions: readonly string[] = t("smartTalk.questions");
+
   return (
     <section
       id="smart-talk"
@@ -102,9 +118,9 @@ const SmartTalk = () => {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="text-3xl md:text-4xl font-semibold text-transparent bg-clip-text bg-white py-6 md:py-8 flex items-center gap-3"
+        className="text-3xl md:text-4xl font-semibold text-transparent bg-clip-text bg-zinc-900 dark:bg-white py-6 md:py-8 flex items-center gap-3"
       >
-        Smart Talk AI
+        {t("smartTalk.heading")}
       </motion.div>
 
       <motion.p
@@ -112,9 +128,9 @@ const SmartTalk = () => {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.3 }}
-        className="text-gray-400 text-center mb-6 px-6 max-w-2xl text-sm"
+        className="text-zinc-600 dark:text-gray-400 text-center mb-6 px-6 max-w-2xl text-sm"
       >
-        Chat with AI to learn more about me, my skills, and experience
+        {t("smartTalk.subtitle")}
       </motion.p>
 
       <motion.div
@@ -124,7 +140,7 @@ const SmartTalk = () => {
         viewport={{ once: true }}
         className="w-full max-w-5xl px-6 md:px-10"
       >
-        <div className="border border-zinc-700/60 bg-white/3 backdrop-blur-md rounded-lg overflow-hidden">
+        <div className="border border-zinc-300 dark:border-zinc-700/60 bg-black/3 dark:bg-white/3 backdrop-blur-md rounded-lg overflow-hidden">
           <div className="h-[450px] md:h-[380px] overflow-y-auto p-4 md:p-6 space-y-3">
             {messages.map((msg, index) => (
               <motion.div
@@ -144,7 +160,7 @@ const SmartTalk = () => {
               <motion.div
                 initial={{ scale: 0.95, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
-                className="bg-white/5 border border-zinc-700/60 p-3 rounded-lg w-fit text-zinc-300"
+                className="bg-black/5 dark:bg-white/5 border border-zinc-300 dark:border-zinc-700/60 p-3 rounded-lg w-fit text-zinc-700 dark:text-zinc-300"
               >
                 {typingText}
               </motion.div>
@@ -157,13 +173,13 @@ const SmartTalk = () => {
 
           {messages.length === 1 && (
             <div className="px-4 md:px-6 pb-3 md:pb-4">
-              <p className="text-gray-400 text-xs md:text-sm mb-2">Try asking:</p>
+              <p className="text-zinc-600 dark:text-gray-400 text-xs md:text-sm mb-2">{t("smartTalk.tryAsking")}</p>
               <div className="grid grid-cols-2 gap-2">
-                {SUGGESTED_QUESTIONS.map((question, index) => (
+                {suggestedQuestions.map((question, index) => (
                   <button
                     key={index}
                     onClick={() => handleSend(question)}
-                    className="text-left text-xs md:text-sm px-3 py-2 bg-white/5 border border-zinc-700 rounded-lg text-zinc-300 hover:border-zinc-400 hover:bg-white/10 transition-all"
+                    className="text-left text-xs md:text-sm px-3 py-2 bg-black/5 dark:bg-white/5 border border-zinc-300 dark:border-zinc-700 rounded-lg text-zinc-700 dark:text-zinc-300 hover:border-zinc-500 dark:hover:border-zinc-400 hover:bg-black/10 dark:hover:bg-white/10 transition-all"
                   >
                     {question}
                   </button>
@@ -172,23 +188,23 @@ const SmartTalk = () => {
             </div>
           )}
 
-          <div className="border-t border-zinc-700/60 p-4">
+          <div className="border-t border-zinc-300 dark:border-zinc-700/60 p-4">
             <div className="flex gap-2">
               <input
                 type="text"
-                placeholder="Ask me anything..."
+                placeholder={t("smartTalk.placeholder")}
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyPress={handleKeyPress}
                 disabled={isLoading}
-                className="flex-1 px-4 py-2.5 text-sm bg-white/5 border border-zinc-700 rounded-lg text-white focus:outline-none focus:border-zinc-400 disabled:opacity-50 placeholder:text-zinc-500"
+                className="flex-1 px-4 py-2.5 text-sm bg-black/5 dark:bg-white/5 border border-zinc-300 dark:border-zinc-700 rounded-lg text-zinc-900 dark:text-white focus:outline-none focus:border-zinc-500 dark:focus:border-zinc-400 disabled:opacity-50 placeholder:text-zinc-400 dark:placeholder:text-zinc-500"
               />
               <button
                 onClick={() => handleSend()}
                 disabled={isLoading || !input.trim()}
-                className="px-6 py-2.5 text-sm font-semibold bg-white hover:bg-zinc-100 text-black rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="px-6 py-2.5 text-sm font-semibold bg-zinc-900 hover:bg-zinc-700 dark:bg-white dark:hover:bg-zinc-100 text-white dark:text-black rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {isLoading ? "..." : "Send"}
+                {isLoading ? "..." : t("smartTalk.send")}
               </button>
             </div>
           </div>

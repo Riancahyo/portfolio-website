@@ -133,6 +133,7 @@ export const OTHER_SKILL = [
 
 export const PROJECTS = [
   {
+    id: "haw-reload",
     title: "HAW RELOAD",
     description:
       "A real-time financial information and point of sale system for managing internet voucher, mobile credit, PPOB product sales, and cash/transfer transactions. Features include shift management, live transaction monitoring via Server-Sent Events (SSE), and financial report export to Excel and PDF.",
@@ -147,6 +148,7 @@ export const PROJECTS = [
     ]
   },
   {
+    id: "ngopai",
     title: "NGOPAI",
     description:
       "A digital education platform built with Next.js for the Ministry of Religious Affairs, East Java (Kemenag Jatim). Key features include activity management, learning materials, participant attendance tracking, and automated certificate generation.",
@@ -161,6 +163,7 @@ export const PROJECTS = [
     ]
   },
   {
+    id: "paratamu-coffee",
     title: "Paratamu Coffee",
     description:
       "A website for a local café built with React and Express.js. Key features include an interactive menu display, facility information, and an online reservation system with room selection.",
@@ -176,6 +179,7 @@ export const PROJECTS = [
     ]
   },
   {
+    id: "ai-career-roadmap",
     title: "AI Career Roadmap",
     description:
       "An AI-powered career path platform built with Next.js. Key features include personalized roadmap recommendations, relevant skill suggestions, and learning progress tracking through dynamic visualizations.",
@@ -189,6 +193,7 @@ export const PROJECTS = [
     ]
   },
   {
+    id: "gulaguard",
     title: "GulaGuard",
     description:
       "An AI-powered nutrition assistant PWA that helps users track daily sugar intake to reduce diabetes risk. Integrates Google Gemini API for AI-driven food analysis with image-based input for a fast, installable mobile experience.",
@@ -202,6 +207,7 @@ export const PROJECTS = [
     ]
   },
   {
+    id: "ebook-library",
     title: "E-Book Library",
     description:
       "A digital e-book borrowing system built with Laravel and Livewire for real-time interaction. Features include a digital book catalog, time-limited borrowing system, auto-renewal, reminder notifications, and an admin dashboard for monitoring borrowing activity.",
@@ -215,6 +221,7 @@ export const PROJECTS = [
     ]
   },
   {
+    id: "portfolio-website",
     title: "Portfolio Website",
     description:
       "A personal portfolio website built with Next.js for optimal performance and SEO. Features a project showcase, skills, work experience, and contact information with a modern responsive design using Next.js App Router, TypeScript, and Tailwind CSS.",
@@ -228,6 +235,7 @@ export const PROJECTS = [
     ]
   },
   {
+    id: "ai-financial-assistant",
     title: "AI Financial Assistant",
     description:
       "An AI-powered personal finance application built with React. Helps users manage their finances smartly by analyzing spending patterns, providing financial insights, and generating automatic budget recommendations. Includes expense tracking, financial planning, and interactive chart visualizations.",
@@ -241,6 +249,7 @@ export const PROJECTS = [
     ]
   },
   {
+    id: "bimbel-management-system",
     title: "Bimbel Management System",
     description:
       "A full-stack tutoring center management system built with Node.js. Features include student and teacher management, automated class scheduling, payment tracking, student progress reports, and a real-time attendance system.",
@@ -256,30 +265,37 @@ export const PROJECTS = [
 
 export const NAV_LINKS = [
   {
+    key: "home",
     title: "Home",
     link: "#home",
   },
   {
+    key: "about",
     title: "About me",
     link: "#about-me",
   },
   {
+    key: "skills",
     title: "Skills",
     link: "#skills",
   },
   {
+    key: "projects",
     title: "Projects",
     link: "#projects",
   },
   {
+    key: "achievements",
     title: "Achievements",
     link: "#achievements",
   },
   {
+    key: "smartTalk",
     title: "Smart Talk",
     link: "#smart-talk",
   },
   {
+    key: "contact",
     title: "Contact",
     link: "#contact",
   },
@@ -287,6 +303,7 @@ export const NAV_LINKS = [
 
 export const ACHIEVEMENTS_DATA = [
   {
+    id: "bnsp-certified-junior-web-developer",
     title: "BNSP Certified Junior Web Developer",
     description: "Official National Competency Certification in Web Development from BNSP Indonesia",
     year: "2024",
@@ -294,6 +311,7 @@ export const ACHIEVEMENTS_DATA = [
     link: "https://drive.google.com/file/d/1zB9oXv7asvf4O0aFG18gq7V7e38MvK2O/view?usp=sharing",
   },
   {
+    id: "fullstack-programming",
     title: "Fullstack Programming",
     description: "Completed comprehensive Fullstack Programming course via Udemy & BISA AI Academy",
     year: "2025",
@@ -301,6 +319,7 @@ export const ACHIEVEMENTS_DATA = [
     link: "https://drive.google.com/file/d/1Z_7aigEGuekZ27pTOws_V2nEQp7G6Hhn/view?usp=sharing",
   },
   {
+    id: "junior-web-developer-vsga",
     title: "Junior Web Developer - VSGA",
     description: "Vocational School Graduate Academy participant by Kominfo (Digital Talent Scholarship)",
     year: "2024",
@@ -308,6 +327,7 @@ export const ACHIEVEMENTS_DATA = [
     link: "https://drive.google.com/file/d/1ilo_QbfZndSLuI9Z-nfUmSN_YGYRkIR8/view?usp=sharing",
   },
   {
+    id: "database-foundations-specialist",
     title: "Database Foundations Specialist",
     description: "Completed intensive training in Database Foundations through Oracle Academy and TSA Kominfo",
     year: "2024",
@@ -315,6 +335,7 @@ export const ACHIEVEMENTS_DATA = [
     link: "https://drive.google.com/file/d/1k1Yjw8HK1hWMqisQ3WCf36neLookNRMv/view?usp=sharing",
   },
   {
+    id: "ai-productivity-api-integration",
     title: "AI Productivity & API Integration",
     description: "Learned to build AI-powered chatbots and integrate AI APIs at Hacktiv8 Indonesia",
     year: "2025",
@@ -322,6 +343,7 @@ export const ACHIEVEMENTS_DATA = [
     link: "https://drive.google.com/file/d/1JSrQu43a9HIg5TC55ESe-PV8EDw2U2US/view?usp=drive_link",
   },
   {
+    id: "ui-ux-design",
     title: "UI/UX Design",
     description: "Actively participated in UI/UX Design training program with dibimbing.id",
     year: "2023",
@@ -329,6 +351,7 @@ export const ACHIEVEMENTS_DATA = [
     link: "https://drive.google.com/file/d/1pLRxvsoygC8oDMkWiDoqOm2bq2__XoBk/view?usp=drive_link",
   },
   {
+    id: "ai-fundamentals-certified",
     title: "AI Fundamentals Certified",
     description: "Earned 'Belajar Dasar AI' certification from Dicoding Academy",
     year: "2025",
@@ -336,6 +359,7 @@ export const ACHIEVEMENTS_DATA = [
     link: "https://drive.google.com/file/d/1RmFjG4565mi-LGUjz9lt4Z-QbRk3fYCd/view?usp=sharing",
   },
   {
+    id: "cloud-gen-ai-on-aws",
     title: "Cloud & Gen AI on AWS",
     description: "Certified in Cloud Fundamentals and Generative AI on AWS through Dicoding",
     year: "2025",
@@ -343,6 +367,7 @@ export const ACHIEVEMENTS_DATA = [
     link: "https://drive.google.com/file/d/15fMJU25tdxXJKD_HvV8G3ft4zHnO3gIT/view?usp=sharing",
   },
   {
+    id: "alibaba-cloud-certified-associate",
     title: "Alibaba Cloud Certified Associate",
     description: "Professional international certification for Cloud Computing from Alibaba Cloud",
     year: "2024",
@@ -350,6 +375,7 @@ export const ACHIEVEMENTS_DATA = [
     link: "https://drive.google.com/file/d/1K7r2f4M2YVrUtcJyunhGFmPP_yGsmB8T/view?usp=drive_link",
   },
   {
+    id: "cloud-networking-administration",
     title: "Cloud & Networking Administration",
     description: "Completed Fundamentals of Cloud and Networking for Digital Entrepreneurs at DEA Kominfo",
     year: "2024",
@@ -357,6 +383,7 @@ export const ACHIEVEMENTS_DATA = [
     link: "https://drive.google.com/file/d/17EjL3v4lj-U3MGp7SgbAOcqVbwJPIBY0/view?usp=drive_link",
   },
   {
+    id: "asean-data-science-explorer",
     title: "ASEAN Data Science Explorer",
     description: "Participated in the ADSE 2024 Enablement Session covering SAP Analytics Cloud and SAP Build Apps",
     year: "2024",
@@ -364,6 +391,7 @@ export const ACHIEVEMENTS_DATA = [
     link: "https://drive.google.com/file/d/1LJ9E6XpLF9bMrhO2WxVJ9X5_7DYKtTaW/view?usp=drive_link",
   },
   {
+    id: "database-foundations-course",
     title: "Database Foundations Course",
     description: "Awarded for satisfactory completion of all coursework in Database Foundations by Oracle Academy",
     year: "2024",
@@ -371,6 +399,7 @@ export const ACHIEVEMENTS_DATA = [
     link: "https://drive.google.com/file/d/1H-TzmfS2PV58zksy67nK738TWW0zinA9/view?usp=drive_link",
   },
   {
+    id: "oracle-database-final-exam",
     title: "Oracle Database Final Exam",
     description: "Successfully completed the Database Foundations course final exam from Oracle Academy",
     year: "2024",

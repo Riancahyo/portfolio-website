@@ -8,8 +8,11 @@ import Link from "next/link";
 import { HiExternalLink } from "react-icons/hi";
 import { RxGithubLogo } from "react-icons/rx";
 import { PROJECTS } from "@/constants";
+import { useLanguage } from "@/context/LanguageContext";
+import { PROJECT_TRANSLATIONS } from "@/lib/translations";
 
 export const Projects = () => {
+  const { t, language } = useLanguage();
   const [showAll, setShowAll] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -35,9 +38,9 @@ export const Projects = () => {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="text-3xl md:text-4xl font-semibold text-transparent bg-clip-text bg-white py-8 md:py-10"
+        className="text-3xl md:text-4xl font-semibold text-transparent bg-clip-text bg-zinc-900 dark:bg-white py-8 md:py-10"
       >
-        My Projects
+        {t("projectsSection.heading")}
       </motion.h1>
 
       <motion.p
@@ -45,9 +48,9 @@ export const Projects = () => {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.3 }}
-        className="text-gray-400 text-center mb-10 px-6 max-w-2xl"
+        className="text-zinc-600 dark:text-gray-400 text-center mb-10 px-6 max-w-2xl"
       >
-        Here are some of my recent projects showcasing my fullstack development skills.
+        {t("projectsSection.subtitle")}
       </motion.p>
 
       <div className="
@@ -57,7 +60,11 @@ export const Projects = () => {
         px-3 sm:px-6 md:px-10
         max-w-[1400px] w-full
       ">
-        {displayedProjects.map((project, index) => (
+        {displayedProjects.map((project, index) => {
+          const description =
+            PROJECT_TRANSLATIONS[project.id]?.[language] ?? project.description;
+
+          return (
           <motion.div
             key={project.title}
             initial={{ opacity: 0, y: 30 }}
@@ -66,7 +73,7 @@ export const Projects = () => {
             transition={{ delay: index * 0.1 }}
             className="
               group relative overflow-hidden rounded-lg
-              border border-zinc-700/60 bg-white/3
+              border border-zinc-300 dark:border-zinc-700/60 bg-black/3 dark:bg-white/3
               hover:border-zinc-500
               transition-all duration-300
               flex flex-col
@@ -81,7 +88,7 @@ export const Projects = () => {
                 fill
                 className="object-cover group-hover:scale-110 transition-transform duration-500"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#030014]/80 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-white/80 dark:from-[#030014]/80 via-transparent to-transparent" />
 
               {/* Tech stack icons on image */}
               <div className="absolute bottom-2 left-2 flex gap-1 flex-wrap">
@@ -100,7 +107,7 @@ export const Projects = () => {
                   </div>
                 ))}
                 {project.techStack && project.techStack.length > 4 && (
-                  <span className="text-[9px] sm:text-[10px] text-zinc-400 self-center">
+                  <span className="text-[9px] sm:text-[10px] text-zinc-600 dark:text-zinc-400 self-center">
                     +{project.techStack.length - 4}
                   </span>
                 )}
@@ -109,12 +116,12 @@ export const Projects = () => {
 
             {/* Content */}
             <div className="flex flex-col flex-grow p-3 sm:p-4">
-              <h3 className="text-sm sm:text-base font-bold text-white mb-1 line-clamp-1">
+              <h3 className="text-sm sm:text-base font-bold text-zinc-900 dark:text-white mb-1 line-clamp-1">
                 {project.title}
               </h3>
 
-              <p className="text-[10px] sm:text-xs text-gray-400 flex-grow line-clamp-2 leading-relaxed">
-                {project.description}
+              <p className="text-[10px] sm:text-xs text-zinc-600 dark:text-gray-400 flex-grow line-clamp-2 leading-relaxed">
+                {description}
               </p>
 
               {/* Buttons */}
@@ -126,12 +133,12 @@ export const Projects = () => {
                     rel="noreferrer noopener"
                     className="
                       flex items-center justify-center gap-1 flex-1 px-2 py-1.5
-                      bg-white hover:bg-zinc-100 text-black rounded-md
+                      bg-zinc-900 hover:bg-zinc-700 dark:bg-white dark:hover:bg-zinc-100 text-white dark:text-black rounded-md
                       text-[10px] sm:text-xs transition-all duration-200 font-semibold
                     "
                   >
                     <HiExternalLink className="w-3 h-3 flex-shrink-0" />
-                    <span>Demo</span>
+                    <span>{t("projectsSection.demo")}</span>
                   </Link>
                 ) : (
                   <div className="flex-1" />
@@ -143,12 +150,12 @@ export const Projects = () => {
                     rel="noreferrer noopener"
                     className="
                       flex items-center justify-center gap-1 flex-1 px-2 py-1.5
-                      border border-zinc-600 hover:border-zinc-400 hover:bg-white/5 text-zinc-300 rounded-md
+                      border border-zinc-400 dark:border-zinc-600 hover:border-zinc-600 dark:hover:border-zinc-400 hover:bg-black/5 dark:hover:bg-white/5 text-zinc-700 dark:text-zinc-300 rounded-md
                       text-[10px] sm:text-xs transition-all duration-200 font-semibold
                     "
                   >
                     <RxGithubLogo className="w-3 h-3 flex-shrink-0" />
-                    <span>Code</span>
+                    <span>{t("projectsSection.code")}</span>
                   </Link>
                 ) : (
                   <div className="flex-1" />
@@ -156,7 +163,8 @@ export const Projects = () => {
               </div>
             </div>
           </motion.div>
-        ))}
+          );
+        })}
       </div>
 
       {PROJECTS.length > displayLimit && (
@@ -169,9 +177,9 @@ export const Projects = () => {
         >
           <button
             onClick={() => setShowAll(!showAll)}
-            className="px-8 py-3 bg-white hover:bg-zinc-100 text-black text-center cursor-pointer rounded-lg transition-all duration-200 font-semibold text-sm"
+            className="px-8 py-3 bg-zinc-900 hover:bg-zinc-700 dark:bg-white dark:hover:bg-zinc-100 text-white dark:text-black text-center cursor-pointer rounded-lg transition-all duration-200 font-semibold text-sm"
           >
-            {showAll ? "Show Less" : `View All (${PROJECTS.length})`}
+            {showAll ? t("projectsSection.showLess") : `${t("projectsSection.viewAll")} (${PROJECTS.length})`}
           </button>
         </motion.div>
       )}

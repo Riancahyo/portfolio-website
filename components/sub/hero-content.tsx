@@ -9,8 +9,11 @@ import {
   slideInFromRight,
   slideInFromTop,
 } from "@/lib/motion";
+import { useLanguage } from "@/context/LanguageContext";
 
 export const HeroContent = () => {
+  const { t } = useLanguage();
+
   return (
     <motion.div
       initial="hidden"
@@ -20,29 +23,29 @@ export const HeroContent = () => {
       <div className="h-full w-full flex flex-col gap-3 md:gap-4 justify-center text-start max-w-[650px]">
         <motion.div
           variants={slideInFromTop}
-          className="Welcome-box py-[8px] px-[14px] border border-zinc-600/50 opacity-[0.9] w-fit"
+          className="Welcome-box py-[8px] px-[14px] border border-zinc-300 dark:border-zinc-600/50 opacity-[0.9] w-fit"
         >
           <h1 className="Welcome-text text-[12px] md:text-[13px]">
-            Full Stack Developer Portfolio
+            {t("hero.badge")}
           </h1>
         </motion.div>
 
         <motion.div
           variants={slideInFromLeft(0.5)}
-          className="flex flex-col gap-3 mt-2 md:mt-4 text-3xl md:text-4xl lg:text-5xl font-bold text-white w-auto h-auto"
+          className="flex flex-col gap-3 mt-2 md:mt-4 text-3xl md:text-4xl lg:text-5xl font-bold text-zinc-900 dark:text-white w-auto h-auto"
         >
           <span className="leading-tight">
-            Building powerful applications
-            <br />from frontend to backend.
+            {t("hero.titleLine1")}
+            <br />
+            {t("hero.titleLine2")}
           </span>
         </motion.div>
 
         <motion.p
           variants={slideInFromLeft(0.8)}
-          className="text-sm md:text-lg text-gray-400 my-2 md:my-3 max-w-[600px] leading-relaxed"
+          className="text-sm md:text-lg text-zinc-600 dark:text-gray-400 my-2 md:my-3 max-w-[600px] leading-relaxed"
         >
-          Hi! I&apos;m a Full Stack Developer who loves creating scalable, high-performance web applications.
-          I work with React, Next.js, TypeScript, Laravel, Node.js, and more.
+          {t("hero.description")}
         </motion.p>
 
         <motion.div
@@ -51,15 +54,15 @@ export const HeroContent = () => {
         >
           <a
             href="#projects"
-            className="py-3 px-6 bg-white hover:bg-zinc-100 text-black text-center cursor-pointer rounded-lg transition-all duration-200 font-semibold text-sm w-full sm:w-auto sm:min-w-[160px]"
+            className="py-3 px-6 bg-zinc-900 hover:bg-zinc-700 dark:bg-white dark:hover:bg-zinc-100 text-white dark:text-black text-center cursor-pointer rounded-lg transition-all duration-200 font-semibold text-sm w-full sm:w-auto sm:min-w-[160px]"
           >
-            View Projects
+            {t("hero.viewProjects")}
           </a>
           <a
             href="#contact"
-            className="py-3 px-6 text-center text-zinc-300 cursor-pointer rounded-lg border border-zinc-600 hover:border-zinc-400 hover:bg-white/5 transition-all duration-200 font-medium text-sm w-full sm:w-auto sm:min-w-[160px]"
+            className="py-3 px-6 text-center text-zinc-700 dark:text-zinc-300 cursor-pointer rounded-lg border border-zinc-400 dark:border-zinc-600 hover:border-zinc-600 dark:hover:border-zinc-400 hover:bg-black/5 dark:hover:bg-white/5 transition-all duration-200 font-medium text-sm w-full sm:w-auto sm:min-w-[160px]"
           >
-            Contact Me
+            {t("hero.contactMe")}
           </a>
         </motion.div>
       </div>

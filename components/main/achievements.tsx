@@ -6,8 +6,11 @@ import { slideInFromLeft, slideInFromTop } from "@/lib/motion";
 import Image from "next/image";
 import { HiExternalLink } from "react-icons/hi";
 import { ACHIEVEMENTS_DATA } from "@/constants";
+import { useLanguage } from "@/context/LanguageContext";
+import { ACHIEVEMENT_TRANSLATIONS } from "@/lib/translations";
 
 const Achievements = () => {
+  const { t, language } = useLanguage();
   const [showAll, setShowAll] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -35,9 +38,9 @@ const Achievements = () => {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="text-3xl md:text-4xl font-semibold text-transparent bg-clip-text bg-white py-8 md:py-10"
+        className="text-3xl md:text-4xl font-semibold text-transparent bg-clip-text bg-zinc-900 dark:bg-white py-8 md:py-10"
       >
-        My Achievements
+        {t("achievements.heading")}
       </motion.div>
 
       <motion.p
@@ -45,9 +48,9 @@ const Achievements = () => {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.3 }}
-        className="text-gray-400 text-center mb-10 px-6 max-w-2xl"
+        className="text-zinc-600 dark:text-gray-400 text-center mb-10 px-6 max-w-2xl"
       >
-        Milestones and accomplishments throughout my journey
+        {t("achievements.subtitle")}
       </motion.p>
 
       <div className="
@@ -57,16 +60,20 @@ const Achievements = () => {
         px-3 sm:px-6 md:px-10 
         max-w-[1400px] w-full
       ">
-        {displayedAchievements.map((achievement, index) => (
+        {displayedAchievements.map((achievement, index) => {
+          const description =
+            ACHIEVEMENT_TRANSLATIONS[achievement.id]?.[language] ?? achievement.description;
+
+          return (
           <motion.div
-            key={index}
+            key={achievement.id}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.1 }}
             className="
               group relative overflow-hidden rounded-lg 
-              border border-zinc-700/60 bg-white/3
+              border border-zinc-300 dark:border-zinc-700/60 bg-black/3 dark:bg-white/3
               hover:border-zinc-500 
               transition-all duration-300
               flex flex-col justify-between
@@ -82,19 +89,19 @@ const Achievements = () => {
               />
 
               <span
-                className="absolute top-2 right-2 text-[10px] sm:text-xs px-2 py-0.5 rounded-full bg-black/60 border border-zinc-600 text-zinc-300 font-medium"
+                className="absolute top-2 right-2 text-[10px] sm:text-xs px-2 py-0.5 rounded-full bg-white/70 dark:bg-black/60 border border-zinc-300 dark:border-zinc-600 text-zinc-700 dark:text-zinc-300 font-medium"
               >
                 {achievement.year}
               </span>
             </div>
 
             <div className="flex flex-col flex-grow p-3 sm:p-4">
-              <h3 className="text-sm sm:text-lg font-bold text-white mb-1 sm:mb-2 line-clamp-2">
+              <h3 className="text-sm sm:text-lg font-bold text-zinc-900 dark:text-white mb-1 sm:mb-2 line-clamp-2">
                 {achievement.title}
               </h3>
 
-              <p className="text-[10px] sm:text-sm text-gray-400 flex-grow line-clamp-3 sm:line-clamp-none">
-                {achievement.description}
+              <p className="text-[10px] sm:text-sm text-zinc-600 dark:text-gray-400 flex-grow line-clamp-3 sm:line-clamp-none">
+                {description}
               </p>
 
               <div className="mt-3">
@@ -104,17 +111,18 @@ const Achievements = () => {
                   rel="noreferrer noopener"
                   className="
                     flex items-center justify-center gap-1 px-3 py-1.5 
-                    bg-white hover:bg-zinc-100 text-black rounded-md 
+                    bg-zinc-900 hover:bg-zinc-700 dark:bg-white dark:hover:bg-zinc-100 text-white dark:text-black rounded-md 
                     text-[10px] sm:text-sm transition-all duration-200 font-semibold
                   "
                 >
                   <HiExternalLink className="w-3 h-3 sm:w-4 sm:h-4" />
-                  View Details
+                  {t("achievements.viewDetails")}
                 </a>
               </div>
             </div>
           </motion.div>
-        ))}
+          );
+        })}
       </div>
 
       {ACHIEVEMENTS_DATA.length > displayLimit && (
@@ -127,9 +135,9 @@ const Achievements = () => {
         >
           <button
             onClick={() => setShowAll(!showAll)}
-            className="px-8 py-3 bg-white hover:bg-zinc-100 text-black text-center cursor-pointer rounded-lg transition-all duration-200 font-semibold text-sm"
+            className="px-8 py-3 bg-zinc-900 hover:bg-zinc-700 dark:bg-white dark:hover:bg-zinc-100 text-white dark:text-black text-center cursor-pointer rounded-lg transition-all duration-200 font-semibold text-sm"
           >
-            {showAll ? "Show Less" : `View All (${ACHIEVEMENTS_DATA.length})`}
+            {showAll ? t("achievements.showLess") : `${t("achievements.viewAll")} (${ACHIEVEMENTS_DATA.length})`}
           </button>
         </motion.div>
       )}

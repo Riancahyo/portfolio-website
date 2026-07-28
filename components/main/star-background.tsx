@@ -6,7 +6,10 @@ import * as random from "maath/random";
 import { useState, useRef, Suspense } from "react";
 import type { Points as PointsType } from "three";
 
+import { useTheme } from "@/context/ThemeContext";
+
 export const StarBackground = (props: PointsProps) => {
+  const { theme } = useTheme();
   const ref = useRef<PointsType | null>(null);
   const [sphere] = useState(() =>
     random.inSphere(new Float32Array(5000), { radius: 1.2 })
@@ -30,10 +33,11 @@ export const StarBackground = (props: PointsProps) => {
       >
         <PointMaterial
           transparent
-          color="#fff"
+          color={theme === "dark" ? "#fff" : "#334155"}
           size={0.002}
           sizeAttenuation
           depthWrite={false}
+          opacity={theme === "dark" ? 1 : 0.4}
         />
       </Points>
     </group>

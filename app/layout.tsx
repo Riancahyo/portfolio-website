@@ -7,6 +7,8 @@ import { Navbar } from "@/components/main/navbar";
 import { StarsCanvas } from "@/components/main/star-background";
 import { siteConfig } from "@/config";
 import { cn } from "@/lib/utils";
+import { ThemeProvider } from "@/context/ThemeContext";
+import { LanguageProvider } from "@/context/LanguageContext";
 
 import "./globals.css";
 
@@ -18,19 +20,39 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = siteConfig;
 
+const themeInitScript = `
+(function() {
+  try {
+    var theme = window.localStorage.getItem('theme');
+    if (theme !== 'light') {
+      document.documentElement.classList.add('dark');
+    }
+  } catch (e) {
+    document.documentElement.classList.add('dark');
+  }
+})();
+`;
+
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body
         className={cn(
-          "bg-[#030014] overflow-y-scroll overflow-x-hidden",
+          "bg-white text-zinc-900 dark:bg-[#030014] dark:text-white overflow-y-scroll overflow-x-hidden transition-colors duration-300",
           inter.className
         )}
       >
-        <StarsCanvas />
-        <Navbar />
-        {children}
-        <Footer />
+        <ThemeProvider>
+          <LanguageProvider>
+            <StarsCanvas />
+            <Navbar />
+            {children}
+            <Footer />
+          </LanguageProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
