@@ -15,7 +15,7 @@ interface ChatMessage {
   content: string;
 }
 
-const genAI = new GoogleGenerativeAI(process.env.NEXT_PUBLIC_GEMINI_API_KEY || '');
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || '');
 
 function buildSystemPrompt(): string {
   const allSkills = [...SKILL_DATA, ...BACKEND_SKILL, ...FULLSTACK_SKILL, ...OTHER_SKILL]
@@ -144,6 +144,6 @@ Please respond naturally and helpfully.`;
 }
 
 export function isGeminiConfigured(): boolean {
-  const apiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY || '';
+  const apiKey = process.env.GEMINI_API_KEY || '';
   return apiKey.length > 0 && apiKey !== 'YOUR_GEMINI_API_KEY_HERE';
 }
