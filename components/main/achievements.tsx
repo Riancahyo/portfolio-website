@@ -4,15 +4,17 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { slideInFromLeft, slideInFromTop } from "@/lib/motion";
 import Image from "next/image";
-import { HiExternalLink } from "react-icons/hi";
+import { HiEye } from "react-icons/hi";
 import { ACHIEVEMENTS_DATA } from "@/constants";
 import { useLanguage } from "@/context/LanguageContext";
 import { ACHIEVEMENT_TRANSLATIONS } from "@/lib/translations";
+import { CertificateLightbox } from "@/components/main/certificate-lightbox";
 
 const Achievements = () => {
   const { t, language } = useLanguage();
   const [showAll, setShowAll] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -27,6 +29,12 @@ const Achievements = () => {
 
   const displayLimit = isMobile ? 4 : 5;
   const displayedAchievements = showAll ? ACHIEVEMENTS_DATA : ACHIEVEMENTS_DATA.slice(0, displayLimit);
+
+  const lightboxItems = ACHIEVEMENTS_DATA.map((achievement) => ({
+    src: achievement.image,
+    title: achievement.title,
+    subtitle: achievement.year,
+  }));
 
   return (
     <section
@@ -80,7 +88,11 @@ const Achievements = () => {
               h-[320px] sm:h-[350px] md:h-[380px] xl:h-[400px]
             "
           >
-            <div className="relative w-full h-[120px] sm:h-[170px] md:h-[180px] overflow-hidden">
+            <button
+              type="button"
+              onClick={() => setLightboxIndex(index)}
+              className="relative w-full h-[120px] sm:h-[170px] md:h-[180px] overflow-hidden cursor-pointer"
+            >
               <Image
                 src={achievement.image}
                 alt={achievement.title}
@@ -93,7 +105,7 @@ const Achievements = () => {
               >
                 {achievement.year}
               </span>
-            </div>
+            </button>
 
             <div className="flex flex-col flex-grow p-3 sm:p-4">
               <h3 className="text-sm sm:text-lg font-bold text-zinc-900 dark:text-white mb-1 sm:mb-2 line-clamp-2">
@@ -105,19 +117,18 @@ const Achievements = () => {
               </p>
 
               <div className="mt-3">
-                <a
-                  href={achievement.link}
-                  target="_blank"
-                  rel="noreferrer noopener"
+                <button
+                  type="button"
+                  onClick={() => setLightboxIndex(index)}
                   className="
-                    flex items-center justify-center gap-1 px-3 py-1.5 
+                    w-full flex items-center justify-center gap-1 px-3 py-1.5 
                     bg-zinc-900 hover:bg-zinc-700 dark:bg-white dark:hover:bg-zinc-100 text-white dark:text-black rounded-md 
                     text-[10px] sm:text-sm transition-all duration-200 font-semibold
                   "
                 >
-                  <HiExternalLink className="w-3 h-3 sm:w-4 sm:h-4" />
+                  <HiEye className="w-3 h-3 sm:w-4 sm:h-4" />
                   {t("achievements.viewDetails")}
-                </a>
+                </button>
               </div>
             </div>
           </motion.div>
@@ -141,6 +152,13 @@ const Achievements = () => {
           </button>
         </motion.div>
       )}
+
+      <CertificateLightbox
+        items={lightboxItems}
+        index={lightboxIndex}
+        onClose={() => setLightboxIndex(null)}
+        onNavigate={setLightboxIndex}
+      />
     </section>
   );
 };

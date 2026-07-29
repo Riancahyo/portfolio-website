@@ -308,7 +308,6 @@ export const ACHIEVEMENTS_DATA = [
     description: "Official National Competency Certification in Web Development from BNSP Indonesia",
     year: "2024",
     image: "/achievements/achievement-1.jpg",
-    link: "https://drive.google.com/file/d/1zB9oXv7asvf4O0aFG18gq7V7e38MvK2O/view?usp=sharing",
   },
   {
     id: "fullstack-programming",
@@ -316,7 +315,6 @@ export const ACHIEVEMENTS_DATA = [
     description: "Completed comprehensive Fullstack Programming course via Udemy & BISA AI Academy",
     year: "2025",
     image: "/achievements/achievement-2.jpg",
-    link: "https://drive.google.com/file/d/1Z_7aigEGuekZ27pTOws_V2nEQp7G6Hhn/view?usp=sharing",
   },
   {
     id: "junior-web-developer-vsga",
@@ -324,7 +322,6 @@ export const ACHIEVEMENTS_DATA = [
     description: "Vocational School Graduate Academy participant by Kominfo (Digital Talent Scholarship)",
     year: "2024",
     image: "/achievements/achievement-3.png",
-    link: "https://drive.google.com/file/d/1ilo_QbfZndSLuI9Z-nfUmSN_YGYRkIR8/view?usp=sharing",
   },
   {
     id: "database-foundations-specialist",
@@ -332,7 +329,6 @@ export const ACHIEVEMENTS_DATA = [
     description: "Completed intensive training in Database Foundations through Oracle Academy and TSA Kominfo",
     year: "2024",
     image: "/achievements/achievement-4.png",
-    link: "https://drive.google.com/file/d/1k1Yjw8HK1hWMqisQ3WCf36neLookNRMv/view?usp=sharing",
   },
   {
     id: "ai-productivity-api-integration",
@@ -340,7 +336,6 @@ export const ACHIEVEMENTS_DATA = [
     description: "Learned to build AI-powered chatbots and integrate AI APIs at Hacktiv8 Indonesia",
     year: "2025",
     image: "/achievements/achievement-5.png",
-    link: "https://drive.google.com/file/d/1JSrQu43a9HIg5TC55ESe-PV8EDw2U2US/view?usp=drive_link",
   },
   {
     id: "ui-ux-design",
@@ -348,7 +343,6 @@ export const ACHIEVEMENTS_DATA = [
     description: "Actively participated in UI/UX Design training program with dibimbing.id",
     year: "2023",
     image: "/achievements/achievement-6.png",
-    link: "https://drive.google.com/file/d/1pLRxvsoygC8oDMkWiDoqOm2bq2__XoBk/view?usp=drive_link",
   },
   {
     id: "ai-fundamentals-certified",
@@ -356,7 +350,6 @@ export const ACHIEVEMENTS_DATA = [
     description: "Earned 'Belajar Dasar AI' certification from Dicoding Academy",
     year: "2025",
     image: "/achievements/achievement-7.png",
-    link: "https://drive.google.com/file/d/1RmFjG4565mi-LGUjz9lt4Z-QbRk3fYCd/view?usp=sharing",
   },
   {
     id: "cloud-gen-ai-on-aws",
@@ -364,7 +357,6 @@ export const ACHIEVEMENTS_DATA = [
     description: "Certified in Cloud Fundamentals and Generative AI on AWS through Dicoding",
     year: "2025",
     image: "/achievements/achievement-8.png",
-    link: "https://drive.google.com/file/d/15fMJU25tdxXJKD_HvV8G3ft4zHnO3gIT/view?usp=sharing",
   },
   {
     id: "alibaba-cloud-certified-associate",
@@ -372,7 +364,6 @@ export const ACHIEVEMENTS_DATA = [
     description: "Professional international certification for Cloud Computing from Alibaba Cloud",
     year: "2024",
     image: "/achievements/achievement-9.png",
-    link: "https://drive.google.com/file/d/1K7r2f4M2YVrUtcJyunhGFmPP_yGsmB8T/view?usp=drive_link",
   },
   {
     id: "cloud-networking-administration",
@@ -380,7 +371,6 @@ export const ACHIEVEMENTS_DATA = [
     description: "Completed Fundamentals of Cloud and Networking for Digital Entrepreneurs at DEA Kominfo",
     year: "2024",
     image: "/achievements/achievement-10.png",
-    link: "https://drive.google.com/file/d/17EjL3v4lj-U3MGp7SgbAOcqVbwJPIBY0/view?usp=drive_link",
   },
   {
     id: "asean-data-science-explorer",
@@ -388,7 +378,6 @@ export const ACHIEVEMENTS_DATA = [
     description: "Participated in the ADSE 2024 Enablement Session covering SAP Analytics Cloud and SAP Build Apps",
     year: "2024",
     image: "/achievements/achievement-11.png",
-    link: "https://drive.google.com/file/d/1LJ9E6XpLF9bMrhO2WxVJ9X5_7DYKtTaW/view?usp=drive_link",
   },
   {
     id: "database-foundations-course",
@@ -396,7 +385,6 @@ export const ACHIEVEMENTS_DATA = [
     description: "Awarded for satisfactory completion of all coursework in Database Foundations by Oracle Academy",
     year: "2024",
     image: "/achievements/achievement-12.png",
-    link: "https://drive.google.com/file/d/1H-TzmfS2PV58zksy67nK738TWW0zinA9/view?usp=drive_link",
   },
   {
     id: "oracle-database-final-exam",
@@ -404,6 +392,92 @@ export const ACHIEVEMENTS_DATA = [
     description: "Successfully completed the Database Foundations course final exam from Oracle Academy",
     year: "2024",
     image: "/achievements/achievement-13.png",
-    link: "https://drive.google.com/file/d/1DunPuW29y6NvYj0pLE_Wt3Lq9-3ODcVg/view?usp=drive_link",
   },
 ];
+export const TIMELINE_DATA = [
+  {
+    id: "inka-it-intern",
+    title: "IT Planning & Transformation Intern",
+    org: "PT Industri Kereta Api (Persero)",
+    type: "internship",
+    startDate: "2026-07",
+    endDate: null,
+  },
+  {
+    id: "reparasi-jiwa-intern",
+    title: "Full Stack Developer Intern",
+    org: "Reparasi Jiwa Indonesia",
+    type: "internship",
+    startDate: "2026-07",
+    endDate: null,
+  },
+  {
+    id: "kreasi-bali-sasmita-intern",
+    title: "Full Stack Developer Intern",
+    org: "PT Kreasi Bali Sasmita",
+    type: "internship",
+    startDate: "2026-02",
+    endDate: "2026-07",
+  },
+  {
+    id: "dicoding-community-builder",
+    title: "Community Builder",
+    org: "Dicoding Indonesia (Giterpal)",
+    type: "community",
+    startDate: "2025-11",
+    endDate: "2026-07",
+  },
+  {
+    id: "hmtrpl-coordinator",
+    title: "Coordinator of Domestic Affairs Division",
+    org: "Himpunan Mahasiswa Teknologi Rekayasa Perangkat Lunak",
+    type: "organization",
+    startDate: "2025-01",
+    endDate: "2026-01",
+  },
+  {
+    id: "pkm-pengabdian-dosen",
+    title: "Community Service Project Team Member",
+    org: "PKM Pengabdian Dosen, Politeknik Negeri Madiun",
+    type: "volunteer",
+    startDate: "2024-07",
+    endDate: "2024-10",
+  },
+  {
+    id: "vsga-junior-web-developer",
+    title: "Junior Web Developer Trainee",
+    org: "BPSDMP KOMINFO Surabaya (VSGA)",
+    type: "training",
+    startDate: "2024-07",
+    endDate: "2024-07",
+  },
+  {
+    id: "novo-club-member",
+    title: "Member",
+    org: "Novo Club by Paragon Corp",
+    type: "organization",
+    startDate: "2024-02",
+    endDate: "2024-07",
+  },
+] as const;
+
+export const TESTIMONIALS_DATA = [
+  {
+    id: "testimonial-1",
+    name: "Nama Dosen Pembimbing",
+    role: "Dosen Pembimbing Skripsi",
+    initials: "DP",
+  },
+  {
+    id: "testimonial-2",
+    name: "Nama Rekan Tim",
+    role: "Rekan Satu Tim Proyek",
+    initials: "RT",
+  },
+  {
+    id: "testimonial-3",
+    name: "Nama Klien",
+    role: "Klien Freelance",
+    initials: "KF",
+  },
+] as const;

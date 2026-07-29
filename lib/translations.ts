@@ -26,7 +26,7 @@ export const translations = {
       heading: "About Me",
       greeting: "Hi! I'm",
       paragraph1:
-        "A passionate Full Stack Developer and a 6th-semester student of Technology of Software Engineering at Politeknik Negeri Madiun. I love building complete web applications from crafting beautiful user interfaces to developing powerful backend services. Turning ideas into real, scalable products is what drives me.",
+        "A passionate Full Stack Developer and a 7th-semester student of Technology of Software Engineering at Politeknik Negeri Madiun. I love building complete web applications from crafting beautiful user interfaces to developing powerful backend services. Turning ideas into real, scalable products is what drives me.",
       paragraph2:
         "My tech stack includes React, Next.js, TypeScript, Laravel, Node.js, Express.js, and databases like MySQL & PostgreSQL. Always learning, building, and continually improving my craft.",
       yearsExp: "Years Exp",
@@ -102,6 +102,41 @@ export const translations = {
       description: "The page you're looking for doesn't exist or has been moved.",
       backHome: "Back to Home",
     },
+    timeline: {
+      heading: "My Journey",
+      subtitle: "Organizations, internships, and volunteer projects along the way",
+      present: "Present",
+    },
+    testimonials: {
+      heading: "What People Say",
+      subtitle: "Feedback from advisors, teammates, and clients I've worked with",
+      addYours: "Leave a Recommendation",
+    },
+    testimonialForm: {
+      title: "Leave a Recommendation",
+      description: "Worked with me? Share a few words",
+      nameLabel: "Your Name *",
+      roleLabel: "Your Role *",
+      rolePlaceholder: "e.g. Thesis Advisor, Teammate, Client",
+      emailLabel: "Your Email *",
+      emailHint: "Not published, only used so I can verify and reply if needed.",
+      messageLabel: "Your Recommendation *",
+      messagePlaceholder: "Share your experience working with me...",
+      submit: "Send Recommendation",
+      sending: "Sending...",
+      success: "Thank you! Your recommendation has been sent.",
+      errorShortMessage: "Please write at least 20 characters.",
+      errorInvalidEmail: "Please enter a valid email address.",
+      errorTurnstile: "Please complete the security verification before sending.",
+      errorConfigMissing: "Configuration missing. Please try again later.",
+      errorSendFailed: "Failed to send. Please check your connection or try again.",
+      close: "Close",
+    },
+    lightbox: {
+      close: "Close",
+      previous: "Previous",
+      next: "Next",
+    },
   },
   id: {
     nav: {
@@ -128,7 +163,7 @@ export const translations = {
       heading: "Tentang Saya",
       greeting: "Hai! Saya",
       paragraph1:
-        "Seorang Full Stack Developer yang bersemangat dan mahasiswa semester 6 Teknologi Rekayasa Perangkat Lunak di Politeknik Negeri Madiun. Saya suka membangun aplikasi web secara menyeluruh, mulai dari merancang antarmuka yang menarik hingga mengembangkan layanan backend yang andal. Mengubah ide menjadi produk nyata dan scalable adalah hal yang memotivasi saya.",
+        "Seorang Full Stack Developer yang bersemangat dan mahasiswa semester 7 Teknologi Rekayasa Perangkat Lunak di Politeknik Negeri Madiun. Saya suka membangun aplikasi web secara menyeluruh, mulai dari merancang antarmuka yang menarik hingga mengembangkan layanan backend yang andal. Mengubah ide menjadi produk nyata dan scalable adalah hal yang memotivasi saya.",
       paragraph2:
         "Tech stack saya meliputi React, Next.js, TypeScript, Laravel, Node.js, Express.js, serta database seperti MySQL & PostgreSQL. Selalu belajar, membangun, dan terus mengasah kemampuan.",
       yearsExp: "Tahun Pengalaman",
@@ -203,6 +238,41 @@ export const translations = {
       title: "Halaman Tidak Ditemukan",
       description: "Halaman yang kamu cari tidak ada atau sudah dipindahkan.",
       backHome: "Kembali ke Beranda",
+    },
+    timeline: {
+      heading: "Perjalanan Saya",
+      subtitle: "Organisasi, magang, dan proyek volunteer sepanjang perjalanan",
+      present: "Sekarang",
+    },
+    testimonials: {
+      heading: "Kata Mereka",
+      subtitle: "Tanggapan dari dosen pembimbing, rekan tim, dan klien yang pernah bekerja sama",
+      addYours: "Beri Rekomendasi",
+    },
+    testimonialForm: {
+      title: "Beri Rekomendasi",
+      description: "Pernah kerja sama dengan saya? Tuliskan pengalamanmu",
+      nameLabel: "Nama Anda *",
+      roleLabel: "Peran/Hubungan *",
+      rolePlaceholder: "contoh: Dosen Pembimbing, Rekan Tim, Klien",
+      emailLabel: "Email Anda *",
+      emailHint: "Tidak dipublikasikan, hanya dipakai untuk verifikasi dan balasan bila diperlukan.",
+      messageLabel: "Rekomendasi Anda *",
+      messagePlaceholder: "Ceritakan pengalaman kerja sama dengan saya...",
+      submit: "Kirim Rekomendasi",
+      sending: "Mengirim...",
+      success: "Terima kasih! Rekomendasi kamu sudah terkirim.",
+      errorShortMessage: "Tulisan minimal 20 karakter ya.",
+      errorInvalidEmail: "Silakan masukkan alamat email yang valid.",
+      errorTurnstile: "Silakan selesaikan verifikasi keamanan terlebih dahulu sebelum mengirim.",
+      errorConfigMissing: "Konfigurasi belum tersedia. Silakan coba lagi nanti.",
+      errorSendFailed: "Gagal mengirim. Periksa koneksi Anda atau coba lagi.",
+      close: "Tutup",
+    },
+    lightbox: {
+      close: "Tutup",
+      previous: "Sebelumnya",
+      next: "Berikutnya",
     },
   },
 } as const;
@@ -298,5 +368,55 @@ export const ACHIEVEMENT_TRANSLATIONS: Record<string, { en: string; id: string }
   "oracle-database-final-exam": {
     en: "Successfully completed the Database Foundations course final exam from Oracle Academy",
     id: "Berhasil menyelesaikan ujian akhir kursus Database Foundations dari Oracle Academy",
+  },
+};
+
+export const TIMELINE_TRANSLATIONS: Record<string, { en: string; id: string }> = {
+  "inka-it-intern": {
+    en: "Interning in IT planning and digital transformation at Indonesia's state-owned train manufacturer.",
+    id: "Magang di divisi perencanaan dan transformasi digital IT di pabrikan kereta api milik negara.",
+  },
+  "reparasi-jiwa-intern": {
+    en: "Remote full stack internship, building product features end-to-end.",
+    id: "Magang full stack developer secara remote, membangun fitur produk dari ujung ke ujung.",
+  },
+  "kreasi-bali-sasmita-intern": {
+    en: "Built full-stack features, including AI integration, for EduMind AI (a school wellbeing platform) and Parahita LMS (an AI-powered therapist training platform), developing backend APIs with FastAPI, PostgreSQL, and Alembic.",
+    id: "Membangun fitur full-stack, termasuk integrasi AI, untuk EduMind AI (platform kesejahteraan sekolah) dan Parahita LMS (platform pelatihan terapis berbasis AI), serta mengembangkan backend API dengan FastAPI, PostgreSQL, dan Alembic.",
+  },
+  "dicoding-community-builder": {
+    en: "Co-founded and grew Giterpal, a Dicoding Community chapter, from 0 to 60+ active members in two months, organizing technical sessions on Git workflows and personal branding.",
+    id: "Ikut mendirikan dan mengembangkan Giterpal, komunitas chapter Dicoding, dari 0 menjadi 60+ anggota aktif dalam dua bulan, serta menyelenggarakan sesi teknis seputar Git workflow dan personal branding.",
+  },
+  "hmtrpl-coordinator": {
+    en: "Led the Domestic Affairs Division, supervising 10+ members across 3 internal programs and chairing major department events including the Joint Meeting.",
+    id: "Memimpin Divisi Dalam Negeri, membina 10+ anggota di 3 program kerja internal, serta menjadi ketua pelaksana acara besar himpunan seperti Joint Meeting.",
+  },
+  "pkm-pengabdian-dosen": {
+    en: "Helped build a Computer-Based Test (CBT) application for OSN simulation and trained 5+ teachers to adopt digital learning tools.",
+    id: "Membantu mengembangkan aplikasi Computer-Based Test (CBT) untuk simulasi OSN dan melatih 5+ guru dalam mengadopsi alat pembelajaran digital.",
+  },
+  "vsga-junior-web-developer": {
+    en: "Completed intensive training under the Vocational School Graduate Academy (VSGA), building and testing responsive web apps with a 4-member team.",
+    id: "Menyelesaikan pelatihan intensif Vocational School Graduate Academy (VSGA), membangun dan menguji aplikasi web responsif bersama tim beranggotakan 4 orang.",
+  },
+  "novo-club-member": {
+    en: "Took part in organizational programs focused on collaboration and networking.",
+    id: "Berpartisipasi dalam program organisasi yang berfokus pada kolaborasi dan networking.",
+  },
+};
+
+export const TESTIMONIAL_TRANSLATIONS: Record<string, { en: string; id: string }> = {
+  "testimonial-1": {
+    en: "Rian consistently showed initiative in his thesis work on RAG for the agriculture domain. He picks up new concepts quickly and isn't afraid to dig into the technical details.",
+    id: "Rian konsisten menunjukkan inisiatif dalam pengerjaan skripsinya tentang RAG di domain pertanian. Ia cepat memahami konsep baru dan tidak ragu menyelami detail teknisnya.",
+  },
+  "testimonial-2": {
+    en: "Working with Rian on our team project was smooth, he communicates clearly, delivers on time, and always double-checks the details before shipping.",
+    id: "Kerja bareng Rian di proyek tim berjalan lancar, komunikasinya jelas, selalu tepat waktu, dan rajin cek ulang detail sebelum rilis.",
+  },
+  "testimonial-3": {
+    en: "We hired Rian for a full-stack feature build and were impressed by how quickly he understood our requirements and turned them into a working product.",
+    id: "Kami memakai jasa Rian untuk membangun fitur full-stack dan terkesan dengan kecepatannya memahami kebutuhan kami lalu mewujudkannya jadi produk yang jalan.",
   },
 };

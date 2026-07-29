@@ -1,4 +1,14 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
+import {
+  PROJECTS,
+  ACHIEVEMENTS_DATA,
+  TIMELINE_DATA,
+  SKILL_DATA,
+  BACKEND_SKILL,
+  FULLSTACK_SKILL,
+  OTHER_SKILL,
+} from '@/constants';
+import { translations, TIMELINE_TRANSLATIONS } from '@/lib/translations';
 
 interface ChatMessage {
   role: "user" | "assistant";
@@ -7,40 +17,53 @@ interface ChatMessage {
 
 const genAI = new GoogleGenerativeAI(process.env.NEXT_PUBLIC_GEMINI_API_KEY || '');
 
-const SYSTEM_PROMPT = `You are a helpful AI assistant for Rian Cahyo's portfolio website. Here's information about Rian:
+function buildSystemPrompt(): string {
+  const allSkills = [...SKILL_DATA, ...BACKEND_SKILL, ...FULLSTACK_SKILL, ...OTHER_SKILL]
+    .map((s) => s.skill_name)
+    .join(", ");
+
+  const projectsList = PROJECTS.map((p) => `- ${p.title}: ${p.description}`).join("\n");
+
+  const achievementsList = ACHIEVEMENTS_DATA.map(
+    (a) => `- ${a.title} (${a.year}): ${a.description}`
+  ).join("\n");
+
+  const timelineList = TIMELINE_DATA.map((entry) => {
+    const description = TIMELINE_TRANSLATIONS[entry.id]?.en ?? "";
+    const period = `${entry.startDate} - ${entry.endDate ?? "Present"}`;
+    return `- ${entry.title} at ${entry.org} (${period}): ${description}`;
+  }).join("\n");
+
+  const bio = `${translations.en.about.paragraph1} ${translations.en.about.paragraph2}`;
+  const location = translations.en.contact.locationValue;
+
+  return `You are a helpful AI assistant embedded in Rian Cahyo Anggoro's portfolio website. Here's up-to-date information about Rian:
 
 Name: Rian Cahyo Anggoro
 Role: Full Stack Developer
+Location: ${location}
 
-Skills: 
-- Frontend: React, Next.js, TypeScript, Tailwind CSS, JavaScript, HTML, CSS
-- Backend: Node.js, Express, Database (SQL, NoSQL)
-- Cloud: AWS, Alibaba Cloud
-- AI/ML: AI Integration, Chatbot Development
-- Tools: Git, Oracle Database
+Bio: ${bio}
 
-Certifications:
-- BNSP Certified Junior Web Developer (2024)
-- Fullstack Programming (2025)
-- Junior Web Developer - VSGA (2024)
-- Database Foundations Specialist (2024)
-- AI Productivity & API Integration (2025)
-- UI/UX Design (2023)
-- AI Fundamentals Certified (2025)
-- Cloud & Gen AI on AWS (2025)
-- Alibaba Cloud Certified Associate (2024)
-- Cloud & Networking Administration (2024)
-- ASEAN Data Science Explorer (2024)
-- Database Foundations Course (2024)
-- Oracle Database Final Exam (2024)
+Skills: ${allSkills}
 
-Location: Ngawi, Jawa Timur, Indonesia
+Experience & Organizations (most recent first):
+${timelineList}
 
-Projects: Modern responsive websites, Interactive web applications, E-commerce platforms, AI-powered chatbots
+Projects:
+${projectsList}
 
-Answer questions about Rian's skills, experience, certifications, projects, and background. Be friendly, concise, and helpful. If asked about contact, mention they can use the contact form on the website.
+Certifications & Achievements:
+${achievementsList}
 
-Keep responses under 3 paragraphs and use a conversational tone.`;
+The website itself also has a dark/light mode toggle, an Indonesian/English language toggle, and a contact form.
+
+Answer questions about Rian's skills, experience, certifications, projects, and background using only the information above. If asked about something not covered here, say you don't have that detail and suggest using the contact form. If asked about contact, mention they can use the contact form on the website. Be friendly, concise, and helpful.
+
+Keep responses under 3 paragraphs and use a conversational tone. Respond in the same language the user writes in (Indonesian or English).`;
+}
+
+const SYSTEM_PROMPT = buildSystemPrompt();
 
 async function retryWithBackoff<T>(
   fn: () => Promise<T>,
