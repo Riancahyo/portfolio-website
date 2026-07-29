@@ -74,6 +74,7 @@ export const translations = {
       errorShortMessage: "Message must be at least 10 characters long.",
       errorConfigMissing: "Configuration missing. Please try again later.",
       errorSendFailed: "Failed to send message. Please check your connection or try again.",
+      errorTurnstile: "Please complete the security verification before sending.",
     },
     smartTalk: {
       heading: "Smart Talk AI",
@@ -95,6 +96,11 @@ export const translations = {
     themeToggle: {
       switchToLight: "Switch to light mode",
       switchToDark: "Switch to dark mode",
+    },
+    notFound: {
+      title: "Page Not Found",
+      description: "The page you're looking for doesn't exist or has been moved.",
+      backHome: "Back to Home",
     },
   },
   id: {
@@ -170,6 +176,7 @@ export const translations = {
       errorShortMessage: "Pesan harus terdiri dari minimal 10 karakter.",
       errorConfigMissing: "Konfigurasi belum tersedia. Silakan coba lagi nanti.",
       errorSendFailed: "Gagal mengirim pesan. Periksa koneksi Anda atau coba lagi.",
+      errorTurnstile: "Silakan selesaikan verifikasi keamanan terlebih dahulu sebelum mengirim.",
     },
     smartTalk: {
       heading: "Smart Talk AI",
@@ -191,6 +198,11 @@ export const translations = {
     themeToggle: {
       switchToLight: "Ganti ke mode terang",
       switchToDark: "Ganti ke mode gelap",
+    },
+    notFound: {
+      title: "Halaman Tidak Ditemukan",
+      description: "Halaman yang kamu cari tidak ada atau sudah dipindahkan.",
+      backHome: "Kembali ke Beranda",
     },
   },
 } as const;

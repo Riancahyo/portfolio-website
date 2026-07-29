@@ -7,6 +7,7 @@ import { RxGithubLogo, RxLinkedinLogo, RxInstagramLogo } from "react-icons/rx";
 import { HiMail, HiLocationMarker, HiPhone } from "react-icons/hi";
 import emailjs from '@emailjs/browser';
 import { useLanguage } from "@/context/LanguageContext";
+import { TurnstileWidget, type TurnstileWidgetRef } from "@/components/main/turnstile-widget";
 
 const Contact = () => {
   const { t } = useLanguage();
@@ -16,9 +17,13 @@ const Contact = () => {
     subject: "",
     message: "",
   });
+  const [website, setWebsite] = useState("");
+  const formLoadedAt = React.useRef<number>(Date.now());
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  const turnstileRef = React.useRef<TurnstileWidgetRef>(null);
 
   const validateEmail = (email: string) => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -36,7 +41,15 @@ const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
+    const submittedTooFast = Date.now() - formLoadedAt.current < 1500;
+    if (website.trim() !== "" || submittedTooFast) {
+      setIsSubmitted(true);
+      setFormData({ name: "", email: "", subject: "", message: "" });
+      setTimeout(() => setIsSubmitted(false), 5000);
+      return;
+    }
+
     if (!validateEmail(formData.email)) {
       setError(t("contact.errorInvalidEmail"));
       return;
@@ -47,10 +60,28 @@ const Contact = () => {
       return;
     }
 
+    if (process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY && !turnstileToken) {
+      setError(t("contact.errorTurnstile"));
+      return;
+    }
+
     setIsLoading(true);
     setError("");
 
     try {
+      if (turnstileToken) {
+        const verifyRes = await fetch("/api/verify-turnstile", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ token: turnstileToken }),
+        });
+        const verifyData = await verifyRes.json();
+
+        if (!verifyData.success) {
+          throw new Error(t("contact.errorTurnstile"));
+        }
+      }
+
       const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
       const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
       const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
@@ -73,9 +104,11 @@ const Contact = () => {
       setFormData({ name: "", email: "", subject: "", message: "" });
       setTimeout(() => setIsSubmitted(false), 5000);
     } catch (err: any) {
-      setError(t("contact.errorSendFailed"));
+      setError(err?.message || t("contact.errorSendFailed"));
     } finally {
       setIsLoading(false);
+      setTurnstileToken(null);
+      turnstileRef.current?.reset();
     }
   };
 
@@ -174,6 +207,22 @@ const Contact = () => {
           className="w-full lg:w-2/3"
         >
           <form onSubmit={handleSubmit} className="space-y-5">
+            <div
+              className="absolute -left-[9999px] top-0 opacity-0 pointer-events-none"
+              aria-hidden="true"
+            >
+              <label htmlFor="website">Website</label>
+              <input
+                type="text"
+                id="website"
+                name="website"
+                value={website}
+                onChange={(e) => setWebsite(e.target.value)}
+                tabIndex={-1}
+                autoComplete="off"
+              />
+            </div>
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               <div>
                 <label className="text-zinc-600 dark:text-gray-400 text-xs md:text-sm mb-2 block">{t("contact.nameLabel")}</label>
@@ -228,6 +277,12 @@ const Contact = () => {
                 placeholder={t("contact.messagePlaceholder")}
               />
             </div>
+
+            <TurnstileWidget
+              ref={turnstileRef}
+              onVerify={setTurnstileToken}
+              onExpire={() => setTurnstileToken(null)}
+            />
 
             <button
               type="submit"

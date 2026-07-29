@@ -99,7 +99,7 @@ export const Navbar = () => {
                   <Link
                     href={link.link}
                     className={`relative px-4 py-2 text-sm font-medium transition-colors ${
-                      isActive ? "text-zinc-900 dark:text-white" : "text-zinc-500 hover:text-zinc-900 dark:text-gray-400 dark:hover:text-white"
+                      isActive ? "text-zinc-900 dark:text-white" : "text-zinc-600 hover:text-zinc-900 dark:text-gray-400 dark:hover:text-white"
                     }`}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
@@ -129,7 +129,7 @@ export const Navbar = () => {
                 className="group relative"
               >
                 <div className="relative p-2 bg-black/5 dark:bg-white/5 backdrop-blur-md rounded-full border border-zinc-300 dark:border-white/10 hover:border-zinc-500 dark:hover:border-white/30 transition-all">
-                  <Icon className="w-5 h-5 text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-white transition-colors" />
+                  <Icon className="w-5 h-5 text-zinc-600 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-white transition-colors" />
                 </div>
               </Link>
             ))}
@@ -193,7 +193,7 @@ export const Navbar = () => {
                           className={`block px-4 py-3 rounded-lg font-medium transition-all ${
                             isActive
                               ? "bg-black/10 dark:bg-white/10 text-zinc-900 dark:text-white border border-zinc-300 dark:border-white/20"
-                              : "text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5"
+                              : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5"
                           }`}
                         >
                           {t(`nav.${link.key}`)}
@@ -211,7 +211,7 @@ export const Navbar = () => {
                   transition={{ delay: 0.5 }}
                   className="flex flex-col gap-3"
                 >
-                  <p className="text-xs text-zinc-500 dark:text-gray-500 uppercase tracking-wider">{t("nav.connect")}</p>
+                  <p className="text-xs text-zinc-600 dark:text-gray-500 uppercase tracking-wider">{t("nav.connect")}</p>
                   <div className="flex gap-3">
                     {SOCIALS.map(({ link, name, icon: Icon }) => (
                       <Link
@@ -222,7 +222,7 @@ export const Navbar = () => {
                         className="group"
                       >
                         <div className="p-3 bg-black/5 dark:bg-white/5 rounded-lg border border-zinc-300 dark:border-white/10 hover:border-zinc-500 dark:hover:border-white/30 transition-all">
-                          <Icon className="w-6 h-6 text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-white transition-colors" />
+                          <Icon className="w-6 h-6 text-zinc-600 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-white transition-colors" />
                         </div>
                       </Link>
                     ))}
@@ -235,7 +235,7 @@ export const Navbar = () => {
                   transition={{ delay: 0.7 }}
                   className="mt-auto pb-6 text-center"
                 >
-                  <p className="text-xs text-zinc-500 dark:text-gray-600">
+                  <p className="text-xs text-zinc-600 dark:text-gray-600">
                     © 2026 Rian Cahyo | {t("nav.rights")}
                   </p>
                 </motion.div>
