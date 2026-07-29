@@ -4,9 +4,24 @@ import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { slideInFromLeft, slideInFromTop } from "@/lib/motion";
 import { ChatMessage, ChatLoading } from "@/components/main/ChatMessage";
-import { sendMessageToGemini, isGeminiConfigured } from "@/lib/gemini";
 import { ChatMessage as ChatMessageType } from "@/types/chat";
 import { useLanguage } from "@/context/LanguageContext";
+
+async function sendMessageToServer(messages: ChatMessageType[]): Promise<string> {
+  const res = await fetch("/api/chat", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ messages }),
+  });
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    throw new Error(data?.error || "Failed to get response");
+  }
+
+  return data.reply as string;
+}
 
 const SmartTalk = () => {
   const { t } = useLanguage();
@@ -20,13 +35,21 @@ const SmartTalk = () => {
 
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [isTyping, setIsTyping] = useState(false);
   const [typingText, setTypingText] = useState("");
   const [isTypingDone, setIsTypingDone] = useState(false);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const typingIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  // Keep the initial greeting message in sync with the selected language,
-  // but don't override the conversation once the user has started chatting.
+  useEffect(() => {
+    return () => {
+      if (typingIntervalRef.current) {
+        clearInterval(typingIntervalRef.current);
+      }
+    };
+  }, []);
+
   useEffect(() => {
     setMessages((prev) => {
       if (prev.length === 1 && prev[0].role === "assistant") {
@@ -34,7 +57,6 @@ const SmartTalk = () => {
       }
       return prev;
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [t]);
 
   const scrollToBottom = (behavior: ScrollBehavior = "smooth") => {
@@ -42,19 +64,28 @@ const SmartTalk = () => {
   };
 
   const autoTypeResponse = (fullText: string, newMessages: ChatMessageType[]) => {
+    if (typingIntervalRef.current) {
+      clearInterval(typingIntervalRef.current);
+    }
+
     setTypingText("");
     setIsTypingDone(false);
+    setIsTyping(true);
 
     let i = 0;
     const speed = 18;
 
-    const typing = setInterval(() => {
+    typingIntervalRef.current = setInterval(() => {
       setTypingText((prev) => prev + fullText[i]);
       i++;
 
       if (i >= fullText.length) {
-        clearInterval(typing);
+        if (typingIntervalRef.current) {
+          clearInterval(typingIntervalRef.current);
+          typingIntervalRef.current = null;
+        }
         setIsTypingDone(true);
+        setIsTyping(false);
 
         setMessages([
           ...newMessages,
@@ -67,12 +98,7 @@ const SmartTalk = () => {
   };
 
   const handleSend = async (customMessage?: string) => {
-    if ((!input.trim() && !customMessage) || isLoading) return;
-
-    if (!isGeminiConfigured()) {
-      alert(t("smartTalk.apiKeyMissing"));
-      return;
-    }
+    if ((!input.trim() && !customMessage) || isLoading || isTyping) return;
 
     const text = customMessage || input.trim();
     setInput("");
@@ -86,7 +112,7 @@ const SmartTalk = () => {
     setIsLoading(true);
 
     try {
-      const assistantMessage = await sendMessageToGemini(newMessages);
+      const assistantMessage = await sendMessageToServer(newMessages);
       autoTypeResponse(assistantMessage, newMessages);
     } catch (error: any) {
       const err = error?.message || t("smartTalk.unknownError");
@@ -179,7 +205,8 @@ const SmartTalk = () => {
                   <button
                     key={index}
                     onClick={() => handleSend(question)}
-                    className="text-left text-xs md:text-sm px-3 py-2 bg-black/5 dark:bg-white/5 border border-zinc-300 dark:border-zinc-700 rounded-lg text-zinc-700 dark:text-zinc-300 hover:border-zinc-500 dark:hover:border-zinc-400 hover:bg-black/10 dark:hover:bg-white/10 transition-all"
+                    disabled={isLoading || isTyping}
+                    className="text-left text-xs md:text-sm px-3 py-2 bg-black/5 dark:bg-white/5 border border-zinc-300 dark:border-zinc-700 rounded-lg text-zinc-700 dark:text-zinc-300 hover:border-zinc-500 dark:hover:border-zinc-400 hover:bg-black/10 dark:hover:bg-white/10 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {question}
                   </button>
@@ -196,12 +223,12 @@ const SmartTalk = () => {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyPress={handleKeyPress}
-                disabled={isLoading}
+                disabled={isLoading || isTyping}
                 className="flex-1 px-4 py-2.5 text-sm bg-black/5 dark:bg-white/5 border border-zinc-300 dark:border-zinc-700 rounded-lg text-zinc-900 dark:text-white focus:outline-none focus:border-zinc-500 dark:focus:border-zinc-400 disabled:opacity-50 placeholder:text-zinc-400 dark:placeholder:text-zinc-500"
               />
               <button
                 onClick={() => handleSend()}
-                disabled={isLoading || !input.trim()}
+                disabled={isLoading || isTyping || !input.trim()}
                 className="px-6 py-2.5 text-sm font-semibold bg-zinc-900 hover:bg-zinc-700 dark:bg-white dark:hover:bg-zinc-100 text-white dark:text-black rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isLoading ? "..." : t("smartTalk.send")}

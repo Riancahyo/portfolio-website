@@ -9,13 +9,7 @@ import {
   OTHER_SKILL,
 } from '@/constants';
 import { translations, TIMELINE_TRANSLATIONS } from '@/lib/translations';
-
-interface ChatMessage {
-  role: "user" | "assistant";
-  content: string;
-}
-
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || '');
+import type { ChatMessage } from '@/types/chat';
 
 function buildSystemPrompt(): string {
   const allSkills = [...SKILL_DATA, ...BACKEND_SKILL, ...FULLSTACK_SKILL, ...OTHER_SKILL]
@@ -71,32 +65,33 @@ async function retryWithBackoff<T>(
   initialDelay = 1000
 ): Promise<T> {
   let lastError: any;
-  
+
   for (let i = 0; i < maxRetries; i++) {
     try {
       return await fn();
     } catch (error: any) {
       lastError = error;
       console.error(`Attempt ${i + 1} failed:`, error);
-      
+
       if (error?.status && error.status !== 503 && error.status !== 429) {
         throw error;
       }
-      
+
       if (i < maxRetries - 1) {
         const delay = initialDelay * Math.pow(2, i);
         console.log(`Retrying in ${delay}ms...`);
-        await new Promise(resolve => setTimeout(resolve, delay));
+        await new Promise((resolve) => setTimeout(resolve, delay));
       }
     }
   }
-  
+
   throw lastError;
 }
 
-export async function sendMessageToGemini(
-  messages: ChatMessage[]
-): Promise<string> {
+export async function getGeminiReply(messages: ChatMessage[]): Promise<string> {
+  const apiKey = process.env.GEMINI_API_KEY || '';
+  const genAI = new GoogleGenerativeAI(apiKey);
+
   try {
     const chatHistory = messages
       .map((msg) => `${msg.role === 'user' ? 'User' : 'Assistant'}: ${msg.content}`)
@@ -109,36 +104,33 @@ ${chatHistory}
 
 Please respond naturally and helpfully.`;
 
-    console.log('Sending request to Gemini...');
-
     const response = await retryWithBackoff(async () => {
-      const model = genAI.getGenerativeModel({ 
+      const model = genAI.getGenerativeModel({
         model: 'gemini-2.5-flash-lite',
         generationConfig: {
           temperature: 0.7,
           maxOutputTokens: 500,
-        }
+        },
       });
-      
+
       const result = await model.generateContent(fullPrompt);
       return result.response;
     });
 
     const text = response.text();
-    console.log('Response received:', text.substring(0, 50) + '...');
-    
+
     return text || 'Sorry, I could not generate a response.';
   } catch (error: any) {
     console.error("Gemini API Error:", error);
-    
+
     if (error?.status === 429) {
       throw new Error('Rate limit exceeded. Please try again in a moment.');
     }
-    
+
     if (error?.status === 403) {
       throw new Error('API key is invalid or not authorized. Please check your configuration.');
     }
-    
+
     throw new Error(`Failed to get response: ${error?.message || 'Unknown error'}`);
   }
 }
