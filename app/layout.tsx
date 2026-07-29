@@ -6,7 +6,8 @@ import { Footer } from "@/components/main/footer";
 import { Navbar } from "@/components/main/navbar";
 import { StarsCanvas } from "@/components/main/star-background";
 import { BackToTop } from "@/components/main/back-to-top";
-import { siteConfig } from "@/config";
+import { siteConfig, SITE_URL } from "@/config";
+import { SOCIALS } from "@/constants";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { LanguageProvider } from "@/context/LanguageContext";
@@ -34,11 +35,33 @@ const themeInitScript = `
 })();
 `;
 
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Rian Cahyo Anggoro",
+  url: SITE_URL,
+  jobTitle: "Full Stack Developer",
+  alumniOf: {
+    "@type": "CollegeOrUniversity",
+    name: "Politeknik Negeri Madiun",
+  },
+  address: {
+    "@type": "PostalAddress",
+    addressRegion: "East Java",
+    addressCountry: "ID",
+  },
+  sameAs: SOCIALS.map((social) => social.link),
+};
+
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
       </head>
       <body
         className={cn(
