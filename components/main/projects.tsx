@@ -10,6 +10,8 @@ import { RxGithubLogo } from "react-icons/rx";
 import { PROJECTS } from "@/constants";
 import { useLanguage } from "@/context/LanguageContext";
 import { PROJECT_TRANSLATIONS } from "@/lib/translations";
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 export const Projects = () => {
   const { t, language } = useLanguage();
@@ -71,15 +73,17 @@ export const Projects = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.1 }}
-            className="
-              group relative overflow-hidden rounded-lg
-              border border-zinc-300 dark:border-zinc-700/60 bg-black/3 dark:bg-white/3
-              hover:border-zinc-500
-              transition-all duration-300
-              flex flex-col
-              h-[290px] sm:h-[340px] md:h-[400px]
-            "
           >
+            <Card
+              className="
+                group relative overflow-hidden shadow-none
+                border-zinc-300 dark:border-zinc-700/60 bg-black/[0.03] dark:bg-white/[0.03]
+                hover:border-zinc-500
+                transition-all duration-300
+                flex flex-col
+                h-[290px] sm:h-[340px] md:h-[400px]
+              "
+            >
             {/* Image */}
             <div className="relative w-full h-[120px] sm:h-[160px] md:h-[180px] overflow-hidden flex-shrink-0">
               <Image
@@ -127,41 +131,33 @@ export const Projects = () => {
               {/* Buttons */}
               <div className="mt-3 flex gap-2">
                 {project.link ? (
-                  <Link
-                    href={project.link}
-                    target="_blank"
-                    rel="noreferrer noopener"
-                    className="
-                      flex items-center justify-center gap-1 flex-1 px-2 py-1.5
-                      bg-zinc-900 hover:bg-zinc-700 dark:bg-white dark:hover:bg-zinc-100 text-white dark:text-black rounded-md
-                      text-[10px] sm:text-xs transition-all duration-200 font-semibold
-                    "
-                  >
-                    <HiExternalLink className="w-3 h-3 flex-shrink-0" />
-                    <span>{t("projectsSection.demo")}</span>
-                  </Link>
+                  <Button asChild size="sm" className="flex-1 text-[10px] sm:text-xs px-2">
+                    <Link href={project.link} target="_blank" rel="noreferrer noopener">
+                      <HiExternalLink className="w-3 h-3 flex-shrink-0 mr-1" />
+                      <span>{t("projectsSection.demo")}</span>
+                    </Link>
+                  </Button>
                 ) : (
                   <div className="flex-1" />
                 )}
                 {project.github ? (
-                  <Link
-                    href={project.github}
-                    target="_blank"
-                    rel="noreferrer noopener"
-                    className="
-                      flex items-center justify-center gap-1 flex-1 px-2 py-1.5
-                      border border-zinc-400 dark:border-zinc-600 hover:border-zinc-600 dark:hover:border-zinc-400 hover:bg-black/5 dark:hover:bg-white/5 text-zinc-700 dark:text-zinc-300 rounded-md
-                      text-[10px] sm:text-xs transition-all duration-200 font-semibold
-                    "
+                  <Button
+                    asChild
+                    size="sm"
+                    variant="outline"
+                    className="flex-1 text-[10px] sm:text-xs px-2 border-zinc-400 dark:border-zinc-600 text-zinc-700 dark:text-zinc-300"
                   >
-                    <RxGithubLogo className="w-3 h-3 flex-shrink-0" />
-                    <span>{t("projectsSection.code")}</span>
-                  </Link>
+                    <Link href={project.github} target="_blank" rel="noreferrer noopener">
+                      <RxGithubLogo className="w-3 h-3 flex-shrink-0 mr-1" />
+                      <span>{t("projectsSection.code")}</span>
+                    </Link>
+                  </Button>
                 ) : (
                   <div className="flex-1" />
                 )}
               </div>
             </div>
+            </Card>
           </motion.div>
           );
         })}
@@ -175,12 +171,9 @@ export const Projects = () => {
           viewport={{ once: true }}
           className="mt-10"
         >
-          <button
-            onClick={() => setShowAll(!showAll)}
-            className="px-8 py-3 bg-zinc-900 hover:bg-zinc-700 dark:bg-white dark:hover:bg-zinc-100 text-white dark:text-black text-center cursor-pointer rounded-lg transition-all duration-200 font-semibold text-sm"
-          >
+          <Button size="lg" onClick={() => setShowAll(!showAll)}>
             {showAll ? t("projectsSection.showLess") : `${t("projectsSection.viewAll")} (${PROJECTS.length})`}
-          </button>
+          </Button>
         </motion.div>
       )}
     </section>

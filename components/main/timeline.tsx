@@ -7,6 +7,8 @@ import { slideInFromTop } from "@/lib/motion";
 import { TIMELINE_DATA } from "@/constants";
 import { useLanguage } from "@/context/LanguageContext";
 import { TIMELINE_TRANSLATIONS } from "@/lib/translations";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 
 const TYPE_CONFIG: Record<
   string,
@@ -96,27 +98,32 @@ const Timeline = () => {
                     isEven ? "md:pr-0" : "md:pl-0"
                   }`}
                 >
-                  <div className="border border-zinc-300 dark:border-zinc-700/60 bg-black/3 dark:bg-white/3 backdrop-blur-md rounded-lg p-4 md:p-5 hover:border-zinc-500 transition-all duration-300">
-                    <div className="flex items-center gap-2 mb-1.5 flex-wrap">
-                      <span className="text-[10px] sm:text-xs px-2 py-0.5 rounded-full bg-black/10 dark:bg-white/10 text-zinc-700 dark:text-zinc-300 font-medium">
-                        {badge}
-                      </span>
-                      <span className="text-[10px] sm:text-xs text-zinc-500 dark:text-gray-500">
-                        {formatPeriod(entry.startDate, entry.endDate, language, t("timeline.present"))}
-                      </span>
-                    </div>
-                    <h3 className="text-sm sm:text-base font-bold text-zinc-900 dark:text-white">
-                      {entry.title}
-                    </h3>
-                    <p className="text-xs sm:text-sm text-zinc-600 dark:text-gray-400 mb-2">
-                      {entry.org}
-                    </p>
-                    {description && (
-                      <p className="text-xs sm:text-sm text-zinc-600 dark:text-gray-400 leading-relaxed">
-                        {description}
+                  <Card className="border-zinc-300 dark:border-zinc-700/60 bg-black/[0.03] dark:bg-white/[0.03] backdrop-blur-md hover:border-zinc-500 transition-all duration-300 shadow-none">
+                    <CardContent className="p-4 md:p-5">
+                      <div className="flex items-center gap-2 mb-1.5 flex-wrap">
+                        <Badge
+                          variant="secondary"
+                          className="text-[10px] sm:text-xs font-medium bg-black/10 dark:bg-white/10 text-zinc-700 dark:text-zinc-300"
+                        >
+                          {badge}
+                        </Badge>
+                        <span className="text-[10px] sm:text-xs text-zinc-500 dark:text-gray-500">
+                          {formatPeriod(entry.startDate, entry.endDate, language, t("timeline.present"))}
+                        </span>
+                      </div>
+                      <h3 className="text-sm sm:text-base font-bold text-zinc-900 dark:text-white">
+                        {entry.title}
+                      </h3>
+                      <p className="text-xs sm:text-sm text-zinc-600 dark:text-gray-400 mb-2">
+                        {entry.org}
                       </p>
-                    )}
-                  </div>
+                      {description && (
+                        <p className="text-xs sm:text-sm text-zinc-600 dark:text-gray-400 leading-relaxed">
+                          {description}
+                        </p>
+                      )}
+                    </CardContent>
+                  </Card>
                 </div>
               </motion.div>
             );

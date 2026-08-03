@@ -9,6 +9,9 @@ import { ACHIEVEMENTS_DATA } from "@/constants";
 import { useLanguage } from "@/context/LanguageContext";
 import { ACHIEVEMENT_TRANSLATIONS } from "@/lib/translations";
 import { CertificateLightbox } from "@/components/main/certificate-lightbox";
+import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
 const Achievements = () => {
   const { t, language } = useLanguage();
@@ -79,58 +82,59 @@ const Achievements = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.1 }}
-            className="
-              group relative overflow-hidden rounded-lg 
-              border border-zinc-300 dark:border-zinc-700/60 bg-black/3 dark:bg-white/3
-              hover:border-zinc-500 
-              transition-all duration-300
-              flex flex-col justify-between
-              h-[320px] sm:h-[350px] md:h-[380px] xl:h-[400px]
-            "
           >
-            <button
-              type="button"
-              onClick={() => setLightboxIndex(index)}
-              className="relative w-full h-[120px] sm:h-[170px] md:h-[180px] overflow-hidden cursor-pointer"
+            <Card
+              className="
+                group relative overflow-hidden shadow-none
+                border-zinc-300 dark:border-zinc-700/60 bg-black/[0.03] dark:bg-white/[0.03]
+                hover:border-zinc-500
+                transition-all duration-300
+                flex flex-col justify-between
+                h-[290px] sm:h-[340px] md:h-[380px] xl:h-[400px]
+              "
             >
-              <Image
-                src={achievement.image}
-                alt={achievement.title}
-                fill
-                className="object-cover group-hover:scale-110 transition-transform duration-500"
-              />
-
-              <span
-                className="absolute top-2 right-2 text-[10px] sm:text-xs px-2 py-0.5 rounded-full bg-white/70 dark:bg-black/60 border border-zinc-300 dark:border-zinc-600 text-zinc-700 dark:text-zinc-300 font-medium"
+              <button
+                type="button"
+                onClick={() => setLightboxIndex(index)}
+                className="relative w-full h-[120px] sm:h-[160px] md:h-[180px] overflow-hidden cursor-pointer"
               >
-                {achievement.year}
-              </span>
-            </button>
+                <Image
+                  src={achievement.image}
+                  alt={achievement.title}
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                />
 
-            <div className="flex flex-col flex-grow p-3 sm:p-4">
-              <h3 className="text-sm sm:text-lg font-bold text-zinc-900 dark:text-white mb-1 sm:mb-2 line-clamp-2">
-                {achievement.title}
-              </h3>
-
-              <p className="text-[10px] sm:text-sm text-zinc-600 dark:text-gray-400 flex-grow line-clamp-3 sm:line-clamp-none">
-                {description}
-              </p>
-
-              <div className="mt-3">
-                <button
-                  type="button"
-                  onClick={() => setLightboxIndex(index)}
-                  className="
-                    w-full flex items-center justify-center gap-1 px-3 py-1.5 
-                    bg-zinc-900 hover:bg-zinc-700 dark:bg-white dark:hover:bg-zinc-100 text-white dark:text-black rounded-md 
-                    text-[10px] sm:text-sm transition-all duration-200 font-semibold
-                  "
+                <Badge
+                  variant="secondary"
+                  className="absolute top-2 right-2 text-[10px] sm:text-xs font-medium bg-white/70 dark:bg-black/60 border-zinc-300 dark:border-zinc-600 text-zinc-700 dark:text-zinc-300"
                 >
-                  <HiEye className="w-3 h-3 sm:w-4 sm:h-4" />
-                  {t("achievements.viewDetails")}
-                </button>
+                  {achievement.year}
+                </Badge>
+              </button>
+
+              <div className="flex flex-col flex-grow p-3 sm:p-4">
+                <h3 className="text-sm sm:text-lg font-bold text-zinc-900 dark:text-white mb-1 sm:mb-2 line-clamp-2">
+                  {achievement.title}
+                </h3>
+
+                <p className="text-[10px] sm:text-sm text-zinc-600 dark:text-gray-400 flex-grow line-clamp-3 sm:line-clamp-none">
+                  {description}
+                </p>
+
+                <div className="mt-3">
+                  <Button
+                    type="button"
+                    size="sm"
+                    onClick={() => setLightboxIndex(index)}
+                    className="w-full text-[10px] sm:text-sm"
+                  >
+                    <HiEye className="w-3 h-3 sm:w-4 sm:h-4 mr-1.5" />
+                    {t("achievements.viewDetails")}
+                  </Button>
+                </div>
               </div>
-            </div>
+            </Card>
           </motion.div>
           );
         })}
@@ -144,12 +148,9 @@ const Achievements = () => {
           viewport={{ once: true }}
           className="mt-10"
         >
-          <button
-            onClick={() => setShowAll(!showAll)}
-            className="px-8 py-3 bg-zinc-900 hover:bg-zinc-700 dark:bg-white dark:hover:bg-zinc-100 text-white dark:text-black text-center cursor-pointer rounded-lg transition-all duration-200 font-semibold text-sm"
-          >
+          <Button size="lg" onClick={() => setShowAll(!showAll)}>
             {showAll ? t("achievements.showLess") : `${t("achievements.viewAll")} (${ACHIEVEMENTS_DATA.length})`}
-          </button>
+          </Button>
         </motion.div>
       )}
 

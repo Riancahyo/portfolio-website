@@ -5,6 +5,8 @@ import { motion } from "framer-motion";
 import { slideInFromLeft, slideInFromRight, slideInFromTop } from "@/lib/motion";
 import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 const About = () => {
   const { t } = useLanguage();
@@ -69,34 +71,31 @@ const About = () => {
           </p>
 
           <div className="grid grid-cols-2 gap-3 mt-3">
-            <div className="border border-zinc-300 dark:border-zinc-700/60 bg-black/5 dark:bg-white/5 backdrop-blur-md rounded-lg p-3 text-center">
-              <h3 className="text-2xl md:text-3xl font-bold text-zinc-900 dark:text-white">
-                1+
-              </h3>
-              <p className="text-zinc-600 dark:text-gray-400 text-xs md:text-sm mt-1">{t("about.yearsExp")}</p>
-            </div>
-            <div className="border border-zinc-300 dark:border-zinc-700/60 bg-black/5 dark:bg-white/5 backdrop-blur-md rounded-lg p-3 text-center">
-              <h3 className="text-2xl md:text-3xl font-bold text-zinc-900 dark:text-white">
-                10+
-              </h3>
-              <p className="text-zinc-600 dark:text-gray-400 text-xs md:text-sm mt-1">{t("about.projects")}</p>
-            </div>
+            <Card className="border-zinc-300 dark:border-zinc-700/60 bg-black/5 dark:bg-white/5 backdrop-blur-md shadow-none">
+              <CardContent className="p-3 text-center">
+                <h3 className="text-2xl md:text-3xl font-bold text-zinc-900 dark:text-white">
+                  1+
+                </h3>
+                <p className="text-zinc-600 dark:text-gray-400 text-xs md:text-sm mt-1">{t("about.yearsExp")}</p>
+              </CardContent>
+            </Card>
+            <Card className="border-zinc-300 dark:border-zinc-700/60 bg-black/5 dark:bg-white/5 backdrop-blur-md shadow-none">
+              <CardContent className="p-3 text-center">
+                <h3 className="text-2xl md:text-3xl font-bold text-zinc-900 dark:text-white">
+                  10+
+                </h3>
+                <p className="text-zinc-600 dark:text-gray-400 text-xs md:text-sm mt-1">{t("about.projects")}</p>
+              </CardContent>
+            </Card>
           </div>
 
-          <div className="flex flex-wrap gap-3 mt-3">
-            <a 
-              href="#contact" 
-              className="px-5 py-2.5 bg-zinc-900 hover:bg-zinc-700 dark:bg-white dark:hover:bg-zinc-100 text-white dark:text-black text-center cursor-pointer rounded-lg text-sm font-semibold transition-all duration-200"
-            >
-              {t("about.contactMe")}
-            </a>
-            <a 
-              href="/resume.pdf" 
-              target="_blank" 
-              className="px-5 py-2.5 border border-zinc-400 dark:border-zinc-600 hover:border-zinc-600 dark:hover:border-zinc-400 hover:bg-black/5 dark:hover:bg-white/5 text-zinc-700 dark:text-zinc-300 cursor-pointer rounded-lg text-sm transition-all duration-200 font-medium"
-            >
-              {t("about.downloadCv")}
-            </a>
+          <div className="flex flex-row gap-3 mt-3">
+            <Button asChild className="flex-1 sm:flex-none">
+              <a href="#contact">{t("about.contactMe")}</a>
+            </Button>
+            <Button asChild variant="outline" className="flex-1 sm:flex-none border-zinc-400 dark:border-zinc-600 text-zinc-700 dark:text-zinc-300">
+              <a href="/resume.pdf" target="_blank">{t("about.downloadCv")}</a>
+            </Button>
           </div>
         </motion.div>
       </div>

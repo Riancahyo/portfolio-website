@@ -6,6 +6,9 @@ import { slideInFromLeft, slideInFromTop } from "@/lib/motion";
 import { ChatMessage, ChatLoading } from "@/components/main/ChatMessage";
 import { ChatMessage as ChatMessageType } from "@/types/chat";
 import { useLanguage } from "@/context/LanguageContext";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 
 async function sendMessageToServer(messages: ChatMessageType[]): Promise<string> {
   const res = await fetch("/api/chat", {
@@ -167,49 +170,52 @@ const SmartTalk = () => {
         className="w-full max-w-5xl px-6 md:px-10"
       >
         <div className="border border-zinc-300 dark:border-zinc-700/60 bg-black/3 dark:bg-white/3 backdrop-blur-md rounded-lg overflow-hidden">
-          <div className="h-[450px] md:h-[380px] overflow-y-auto p-4 md:p-6 space-y-3">
-            {messages.map((msg, index) => (
-              <motion.div
-                key={index}
-                animate={
-                  isTypingDone && index === messages.length - 1
-                    ? { scale: [1, 1.03, 1] }
-                    : {}
-                }
-                transition={{ duration: 0.3 }}
-              >
-                <ChatMessage message={msg} />
-              </motion.div>
-            ))}
+          <ScrollArea className="h-[450px] md:h-[380px]">
+            <div className="p-4 md:p-6 space-y-3">
+              {messages.map((msg, index) => (
+                <motion.div
+                  key={index}
+                  animate={
+                    isTypingDone && index === messages.length - 1
+                      ? { scale: [1, 1.03, 1] }
+                      : {}
+                  }
+                  transition={{ duration: 0.3 }}
+                >
+                  <ChatMessage message={msg} />
+                </motion.div>
+              ))}
 
-            {typingText && (
-              <motion.div
-                initial={{ scale: 0.95, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                className="bg-black/5 dark:bg-white/5 border border-zinc-300 dark:border-zinc-700/60 p-3 rounded-lg w-fit text-zinc-700 dark:text-zinc-300"
-              >
-                {typingText}
-              </motion.div>
-            )}
+              {typingText && (
+                <motion.div
+                  initial={{ scale: 0.95, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  className="bg-black/5 dark:bg-white/5 border border-zinc-300 dark:border-zinc-700/60 p-3 rounded-lg w-fit text-zinc-700 dark:text-zinc-300"
+                >
+                  {typingText}
+                </motion.div>
+              )}
 
-            {isLoading && <ChatLoading />}
+              {isLoading && <ChatLoading />}
 
-            <div ref={messagesEndRef} />
-          </div>
+              <div ref={messagesEndRef} />
+            </div>
+          </ScrollArea>
 
           {messages.length === 1 && (
             <div className="px-4 md:px-6 pb-3 md:pb-4">
               <p className="text-zinc-600 dark:text-gray-400 text-xs md:text-sm mb-2">{t("smartTalk.tryAsking")}</p>
               <div className="grid grid-cols-2 gap-2">
                 {suggestedQuestions.map((question, index) => (
-                  <button
+                  <Button
                     key={index}
+                    variant="outline"
                     onClick={() => handleSend(question)}
                     disabled={isLoading || isTyping}
-                    className="text-left text-xs md:text-sm px-3 py-2 bg-black/5 dark:bg-white/5 border border-zinc-300 dark:border-zinc-700 rounded-lg text-zinc-700 dark:text-zinc-300 hover:border-zinc-500 dark:hover:border-zinc-400 hover:bg-black/10 dark:hover:bg-white/10 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="h-auto justify-start text-left whitespace-normal text-xs md:text-sm px-3 py-2 font-normal bg-black/5 dark:bg-white/5 border-zinc-300 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 hover:border-zinc-500 dark:hover:border-zinc-400 hover:bg-black/10 dark:hover:bg-white/10"
                   >
                     {question}
-                  </button>
+                  </Button>
                 ))}
               </div>
             </div>
@@ -217,22 +223,21 @@ const SmartTalk = () => {
 
           <div className="border-t border-zinc-300 dark:border-zinc-700/60 p-4">
             <div className="flex gap-2">
-              <input
+              <Input
                 type="text"
                 placeholder={t("smartTalk.placeholder")}
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyPress={handleKeyPress}
                 disabled={isLoading || isTyping}
-                className="flex-1 px-4 py-2.5 text-sm bg-black/5 dark:bg-white/5 border border-zinc-300 dark:border-zinc-700 rounded-lg text-zinc-900 dark:text-white focus:outline-none focus:border-zinc-500 dark:focus:border-zinc-400 disabled:opacity-50 placeholder:text-zinc-400 dark:placeholder:text-zinc-500"
+                className="flex-1"
               />
-              <button
+              <Button
                 onClick={() => handleSend()}
                 disabled={isLoading || isTyping || !input.trim()}
-                className="px-6 py-2.5 text-sm font-semibold bg-zinc-900 hover:bg-zinc-700 dark:bg-white dark:hover:bg-zinc-100 text-white dark:text-black rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isLoading ? "..." : t("smartTalk.send")}
-              </button>
+              </Button>
             </div>
           </div>
         </div>

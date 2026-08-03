@@ -20,7 +20,7 @@ export const Skills = () => {
 
       <div className="w-full overflow-x-hidden">
         <div className="max-w-4xl mx-auto px-4">
-          <div className="flex flex-row justify-center flex-wrap mt-4 gap-3 md:gap-5 items-center">
+          <div className="flex flex-row justify-center flex-wrap mt-4 gap-2.5 md:gap-5 items-center">
             {SKILL_DATA.map((skill, i) => (
               <SkillDataProvider
                 key={skill.skill_name}
@@ -32,7 +32,7 @@ export const Skills = () => {
               />
             ))}
           </div>
-          <div className="flex flex-row justify-center flex-wrap mt-4 gap-3 md:gap-5 items-center">
+          <div className="flex flex-row justify-center flex-wrap mt-4 gap-2.5 md:gap-5 items-center">
             {BACKEND_SKILL.map((skill, i) => (
               <SkillDataProvider
                 key={skill.skill_name}
@@ -44,7 +44,7 @@ export const Skills = () => {
               />
             ))}
           </div>
-          <div className="flex flex-row justify-center flex-wrap mt-4 gap-3 md:gap-5 items-center">
+          <div className="flex flex-row justify-center flex-wrap mt-4 gap-2.5 md:gap-5 items-center">
             {FULLSTACK_SKILL.map((skill, i) => (
               <SkillDataProvider
                 key={skill.skill_name}
@@ -56,7 +56,7 @@ export const Skills = () => {
               />
             ))}
           </div>
-          <div className="flex flex-row justify-center flex-wrap mt-4 gap-3 md:gap-5 items-center">
+          <div className="flex flex-row justify-center flex-wrap mt-4 gap-2.5 md:gap-5 items-center">
             {OTHER_SKILL.map((skill, i) => (
               <SkillDataProvider
                 key={skill.skill_name}
@@ -75,7 +75,7 @@ export const Skills = () => {
         <div className="w-full h-full z-[-10] opacity-30 transition-opacity duration-300 absolute items-center justify-center bg-cover hidden dark:flex">
           <video
             className="w-full h-auto"
-            preload="false"
+            preload="none"
             playsInline
             loop
             muted

@@ -8,6 +8,11 @@ import { HiMail, HiLocationMarker, HiPhone } from "react-icons/hi";
 import emailjs from '@emailjs/browser';
 import { useLanguage } from "@/context/LanguageContext";
 import { TurnstileWidget, type TurnstileWidgetRef } from "@/components/main/turnstile-widget";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 
 const Contact = () => {
   const { t } = useLanguage();
@@ -211,8 +216,8 @@ const Contact = () => {
               className="absolute -left-[9999px] top-0 opacity-0 pointer-events-none"
               aria-hidden="true"
             >
-              <label htmlFor="website">Website</label>
-              <input
+              <Label htmlFor="website">Website</Label>
+              <Input
                 type="text"
                 id="website"
                 name="website"
@@ -224,35 +229,42 @@ const Contact = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-              <div>
-                <label className="text-zinc-600 dark:text-gray-400 text-xs md:text-sm mb-2 block">{t("contact.nameLabel")}</label>
-                <input
+              <div className="space-y-2">
+                <Label htmlFor="contact-name" className="text-muted-foreground text-xs md:text-sm font-normal">
+                  {t("contact.nameLabel")}
+                </Label>
+                <Input
+                  id="contact-name"
                   type="text"
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
                   required
                   disabled={isLoading}
-                  className="w-full px-3 md:px-4 py-2.5 md:py-3 text-sm md:text-base bg-black/5 dark:bg-white/5 border border-zinc-300 dark:border-zinc-700 rounded-lg text-zinc-900 dark:text-white focus:outline-none focus:border-zinc-500 dark:focus:border-zinc-400 disabled:opacity-50"
                 />
               </div>
-              <div>
-                <label className="text-zinc-600 dark:text-gray-400 text-xs md:text-sm mb-2 block">{t("contact.emailLabel")}</label>
-                <input
+              <div className="space-y-2">
+                <Label htmlFor="contact-email" className="text-muted-foreground text-xs md:text-sm font-normal">
+                  {t("contact.emailLabel")}
+                </Label>
+                <Input
+                  id="contact-email"
                   type="email"
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
                   required
                   disabled={isLoading}
-                  className="w-full px-3 md:px-4 py-2.5 md:py-3 text-sm md:text-base bg-black/5 dark:bg-white/5 border border-zinc-300 dark:border-zinc-700 rounded-lg text-zinc-900 dark:text-white focus:outline-none focus:border-zinc-500 dark:focus:border-zinc-400 disabled:opacity-50"
                 />
               </div>
             </div>
 
-            <div>
-              <label className="text-zinc-600 dark:text-gray-400 text-xs md:text-sm mb-2 block">{t("contact.subjectLabel")}</label>
-              <input
+            <div className="space-y-2">
+              <Label htmlFor="contact-subject" className="text-muted-foreground text-xs md:text-sm font-normal">
+                {t("contact.subjectLabel")}
+              </Label>
+              <Input
+                id="contact-subject"
                 type="text"
                 name="subject"
                 value={formData.subject}
@@ -260,20 +272,22 @@ const Contact = () => {
                 required
                 disabled={isLoading}
                 placeholder={t("contact.subjectPlaceholder")}
-                className="w-full px-3 md:px-4 py-2.5 md:py-3 text-sm md:text-base bg-black/5 dark:bg-white/5 border border-zinc-300 dark:border-zinc-700 rounded-lg text-zinc-900 dark:text-white focus:outline-none focus:border-zinc-500 dark:focus:border-zinc-400 disabled:opacity-50 placeholder:text-zinc-400 dark:placeholder:text-zinc-500"
               />
             </div>
 
-            <div>
-              <label className="text-zinc-600 dark:text-gray-400 text-xs md:text-sm mb-2 block">{t("contact.messageLabel")}</label>
-              <textarea
+            <div className="space-y-2">
+              <Label htmlFor="contact-message" className="text-muted-foreground text-xs md:text-sm font-normal">
+                {t("contact.messageLabel")}
+              </Label>
+              <Textarea
+                id="contact-message"
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
                 required
                 disabled={isLoading}
                 rows={5}
-                className="w-full px-3 md:px-4 py-2.5 md:py-3 text-sm md:text-base bg-black/5 dark:bg-white/5 border border-zinc-300 dark:border-zinc-700 rounded-lg text-zinc-900 dark:text-white focus:outline-none focus:border-zinc-500 dark:focus:border-zinc-400 resize-none disabled:opacity-50 placeholder:text-zinc-400 dark:placeholder:text-zinc-500"
+                className="resize-none"
                 placeholder={t("contact.messagePlaceholder")}
               />
             </div>
@@ -284,28 +298,24 @@ const Contact = () => {
               onExpire={() => setTurnstileToken(null)}
             />
 
-            <button
-              type="submit"
-              disabled={isLoading}
-              className="w-full md:w-auto px-6 md:px-8 py-2.5 md:py-3 text-sm font-semibold bg-zinc-900 hover:bg-zinc-700 dark:bg-white dark:hover:bg-zinc-100 text-white dark:text-black rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
-            >
+            <Button type="submit" disabled={isLoading} size="lg" className="w-full md:w-auto">
               {isLoading ? t("contact.sending") : t("contact.send")}
-            </button>
+            </Button>
 
             {isSubmitted && (
-              <div className="p-4 bg-green-500/10 border border-green-500/30 rounded-lg">
-                <p className="text-green-600 dark:text-green-400 text-sm md:text-base flex items-center gap-2">
-                  <span className="text-lg">✓</span> {t("contact.success")}
-                </p>
-              </div>
+              <Alert variant="success">
+                <AlertDescription>
+                  <span className="text-lg leading-none">✓</span> {t("contact.success")}
+                </AlertDescription>
+              </Alert>
             )}
 
             {error && (
-              <div className="p-4 bg-red-500/10 border border-red-500/30 rounded-lg">
-                <p className="text-red-600 dark:text-red-400 text-sm md:text-base flex items-center gap-2">
-                  <span className="text-lg">✕</span> {error}
-                </p>
-              </div>
+              <Alert variant="destructive">
+                <AlertDescription>
+                  <span className="text-lg leading-none">✕</span> {error}
+                </AlertDescription>
+              </Alert>
             )}
           </form>
         </motion.div>

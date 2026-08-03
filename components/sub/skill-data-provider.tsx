@@ -50,7 +50,7 @@ export const SkillDataProvider = ({
           maxWidth: width,
           maxHeight: height,
         }}
-        className="w-[48px] h-[48px] md:w-auto md:h-auto object-contain"
+        className="w-[40px] h-[40px] md:w-auto md:h-auto object-contain"
       />
     </motion.div>
   );
