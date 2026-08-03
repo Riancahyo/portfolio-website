@@ -75,7 +75,7 @@ export const Skills = () => {
         <div className="w-full h-full z-[-10] opacity-30 transition-opacity duration-300 absolute items-center justify-center bg-cover hidden dark:flex">
           <video
             className="w-full h-auto"
-            preload="none"
+            preload="false"
             playsInline
             loop
             muted

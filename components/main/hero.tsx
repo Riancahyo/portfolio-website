@@ -12,7 +12,7 @@ export const Hero = () => {
           disablePictureInPicture
           disableRemotePlayback
           controls={false}
-          preload="none"
+          preload="auto"
           className="rotate-180 absolute top-[-340px] left-0 w-full h-full object-cover pointer-events-none select-none"
         >
           <source src="/videos/blackhole.webm" type="video/webm" />
