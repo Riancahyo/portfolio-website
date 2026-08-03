@@ -4,7 +4,7 @@ import type { PropsWithChildren } from "react";
 
 import { Footer } from "@/components/main/footer";
 import { Navbar } from "@/components/main/navbar";
-import { StarBackgroundLoader } from "@/components/main/star-background-loader";
+import { StarsCanvas } from "@/components/main/star-background";
 import { BackToTop } from "@/components/main/back-to-top";
 import { siteConfig, SITE_URL } from "@/config";
 import { SOCIALS } from "@/constants";
@@ -71,7 +71,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
       >
         <ThemeProvider>
           <LanguageProvider>
-            <StarBackgroundLoader />
+            <StarsCanvas />
             <Navbar />
             {children}
             <Footer />
