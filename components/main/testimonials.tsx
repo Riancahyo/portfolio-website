@@ -211,7 +211,7 @@ const Testimonials = () => {
       </div>
 
       {/* Desktop: static grid */}
-      <div className="hidden md:grid md:grid-cols-3 gap-5 sm:gap-6 px-6 md:px-10 max-w-6xl w-full">
+      <div className="hidden md:flex md:flex-wrap md:justify-center gap-5 sm:gap-6 px-6 md:px-10 max-w-6xl w-full">
         {TESTIMONIALS_DATA.map((testimonial, index) => {
           const quote = TESTIMONIAL_TRANSLATIONS[testimonial.id]?.[language];
 
@@ -222,6 +222,7 @@ const Testimonials = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
+              className="w-full md:w-[calc(33.333%-1rem)] max-w-[360px]"
             >
               <TestimonialCard
                 quote={quote}

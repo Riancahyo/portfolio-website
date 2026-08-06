@@ -278,6 +278,10 @@ export const translations = {
 } as const;
 
 export const PROJECT_TRANSLATIONS: Record<string, { en: string; id: string }> = {
+  "edumind": {
+    en: "A school well-being platform that helps schools monitor students' emotional well-being through self-assessment, teacher reflection, professional referrals, and school insights. Built with a responsive interface to support educators in creating a safe and supportive learning environment.",
+    id: "Platform kesejahteraan sekolah yang membantu sekolah memantau kesejahteraan emosional siswa melalui self-assessment, refleksi guru, rujukan profesional, dan insight sekolah. Dibangun dengan antarmuka yang responsif untuk mendukung terciptanya lingkungan belajar yang aman dan suportif.",
+  },
   "haw-reload": {
     en: "A real-time financial information and point of sale system for managing internet voucher, mobile credit, PPOB product sales, and cash/transfer transactions. Features include shift management, live transaction monitoring via Server-Sent Events (SSE), and financial report export to Excel and PDF.",
     id: "Sistem informasi keuangan dan point of sale real-time untuk mengelola voucher internet, pulsa, penjualan produk PPOB, serta transaksi tunai/transfer. Dilengkapi manajemen shift, pemantauan transaksi secara langsung melalui Server-Sent Events (SSE), dan ekspor laporan keuangan ke Excel dan PDF.",
@@ -408,14 +412,10 @@ export const TIMELINE_TRANSLATIONS: Record<string, { en: string; id: string }> =
 
 export const TESTIMONIAL_TRANSLATIONS: Record<string, { en: string; id: string }> = {
   "testimonial-1": {
-    en: "Rian consistently showed initiative in his thesis work on RAG for the agriculture domain. He picks up new concepts quickly and isn't afraid to dig into the technical details.",
-    id: "Rian konsisten menunjukkan inisiatif dalam pengerjaan skripsinya tentang RAG di domain pertanian. Ia cepat memahami konsep baru dan tidak ragu menyelami detail teknisnya.",
-  },
-  "testimonial-2": {
     en: "Working with Rian on our team project was smooth, he communicates clearly, delivers on time, and always double-checks the details before shipping.",
     id: "Kerja bareng Rian di proyek tim berjalan lancar, komunikasinya jelas, selalu tepat waktu, dan rajin cek ulang detail sebelum rilis.",
   },
-  "testimonial-3": {
+  "testimonial-2": {
     en: "We hired Rian for a full-stack feature build and were impressed by how quickly he understood our requirements and turned them into a working product.",
     id: "Kami memakai jasa Rian untuk membangun fitur full-stack dan terkesan dengan kecepatannya memahami kebutuhan kami lalu mewujudkannya jadi produk yang jalan.",
   },

@@ -133,6 +133,22 @@ export const OTHER_SKILL = [
 
 export const PROJECTS = [
   {
+    id: "edumind",
+    title: "EduMind",
+    description:
+      "A school well-being platform that helps schools monitor students' emotional well-being through self-assessment, teacher reflection, professional referrals, and school insights. Built with a responsive interface to support educators in creating a safe and supportive learning environment.",
+    image: "/projects/edumind.png",
+    link: "#",
+    github: "#",
+    techStack: [
+      { name: "Next.js", icon: "/skills/next.png" },
+      { name: "TypeScript", icon: "/skills/ts.png" },
+      { name: "Tailwind CSS", icon: "/skills/tailwind.png" },
+      { name: "Fast API", icon: "/skills/fastapi.png" },
+      { name: "PostgreSQL", icon: "/skills/postgresql.png" },
+    ]
+  },
+  {
     id: "haw-reload",
     title: "HAW RELOAD",
     description:
@@ -464,19 +480,13 @@ export const TIMELINE_DATA = [
 export const TESTIMONIALS_DATA = [
   {
     id: "testimonial-1",
-    name: "Nama Dosen Pembimbing",
-    role: "Dosen Pembimbing Skripsi",
-    initials: "DP",
-  },
-  {
-    id: "testimonial-2",
-    name: "Nama Rekan Tim",
+    name: "Dafa Deskian",
     role: "Rekan Satu Tim Proyek",
     initials: "RT",
   },
   {
-    id: "testimonial-3",
-    name: "Nama Klien",
+    id: "testimonial-2",
+    name: "Balqis",
     role: "Klien Freelance",
     initials: "KF",
   },

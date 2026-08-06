@@ -96,7 +96,7 @@ export const Projects = () => {
 
               {/* Tech stack icons on image */}
               <div className="absolute bottom-2 left-2 flex gap-1 flex-wrap">
-                {project.techStack?.slice(0, 4).map((tech, i) => (
+                {project.techStack?.map((tech, i) => (
                   <div
                     key={i}
                     className="w-4 h-4 sm:w-5 sm:h-5 relative"
@@ -110,11 +110,6 @@ export const Projects = () => {
                     />
                   </div>
                 ))}
-                {project.techStack && project.techStack.length > 4 && (
-                  <span className="text-[9px] sm:text-[10px] text-zinc-600 dark:text-zinc-400 self-center">
-                    +{project.techStack.length - 4}
-                  </span>
-                )}
               </div>
             </div>
 
